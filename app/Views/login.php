@@ -23,6 +23,7 @@
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
                 <p>1</p>
                 <h1>Tes</h1>
+                <h2>tes</h2>
                 <div class="form-outline form-white mb-4">
                   <input type="email" id="typeEmailX" class="form-control form-control-lg" />
                   <label class="form-label" for="typeEmailX">Email</label>
