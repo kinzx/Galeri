@@ -33,8 +33,8 @@
                 <form id="contactForm">
                     <div class="row input-group-newsletter">
                         <div class="col-auto">
-                            <a class="btn btn-primary" id="submitButton" type="submit">Login</a>
-                            <a href="<?= base_url('') ?>"></a>
+                            
+                            <a class="btn btn-primary btn-lg" href="<?= base_url('/login') ?>">Login</a>
                         </div>
                     </div>
                 </form>
