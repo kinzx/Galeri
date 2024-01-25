@@ -13,4 +13,5 @@ $routes->get('/profile', 'Home::profile');
 $routes->get('/home', 'Home::home');
 $routes->get('/register', 'Home::register');
 $routes->get('/login', 'Home::login');
+$routes->get('/kelola', 'Home::kelola');
 

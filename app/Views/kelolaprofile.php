@@ -3,15 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Glaria</title>
-    <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    
-    <link href="<?= base_url('css/layout.css') ?>" rel="stylesheet">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
-
+    <link href="<?= base_url('css/tes.php') ?>" rel="stylesheet">
+    <title>Document</title>
 </head>
 
 <body>
@@ -42,60 +37,31 @@
             </div>
         </div>
     </nav>
-
-    <div class="container">
-        <div class="" style="text-align: center;">
-            <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="90px" height="90px" class="rounded-circle">
-            <h4>Kinar Aurasae</h4>
-            <button class="btn btn-dark mb-2" style="border-radius: 50px;">Kelola Akun</button>
-        </div>
-    </div>
-
-    <div class="container">
-
-        <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Album</h1>
-
-
-        <hr class="mt-2 mb-5">
-
-        <div class="row text-center text-lg-start">
-
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid rounded " src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid rounded " src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="150px" height="150px" class="rounded-circle">
                 </div>
-                <div class="modal-body">
-                    <img src="<?= base_url('') ?>" alt="">
-                </div>
-                <div class="modal-footer">
-
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="Kinar Aurasae" value=""></div>
+                        <div class="col-md-12"><label class="labels">Nama lengkap</label><input type="text" class="form-control" placeholder="nama lengkap" value=""></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="email" value=""></div>
+                        <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" placeholder="XXXXXXXX" value=""></div>
+                        <div class="col-md-12"><label class="labels">Alamat</label><input type="text" class="form-control" placeholder="alamat" value=""></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer>
-
-    </footer>
-
+    </div>
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/custom.js') ?>"></script>

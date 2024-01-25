@@ -9,6 +9,11 @@ class Home extends BaseController
         return view('index');
     }
 
+    public function kelola(): string
+    {
+        return view('kelolaprofile');
+    }
+
     public function tambah(): string
     {
         return view('tambah');
