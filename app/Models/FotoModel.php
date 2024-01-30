@@ -12,7 +12,7 @@ class FotoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['judul','deskripsi','tanggalunggah','lokasifoto','userid'];
+    protected $allowedFields    = ['judul','deskripsi','tanggalunggah','lokasifoto','iduser'];
 
     // Dates
     protected $useTimestamps = false;

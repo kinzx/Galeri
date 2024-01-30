@@ -30,7 +30,7 @@ class Foto extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'userid'           => [
+            'iduser'           => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'   => true,

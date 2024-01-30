@@ -19,7 +19,7 @@ class Likefoto extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 225,
             ],
-            'userid'       => [
+            'iduser'       => [
                 'type'       => 'INT',
                 'unsigned'   => true,
             ],

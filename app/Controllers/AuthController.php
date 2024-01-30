@@ -11,6 +11,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->userModel = new UserModel();
+
+
         $this->session = \Config\Services::session();
         helper(['form', 'url']);
 
@@ -62,7 +64,7 @@ class AuthController extends Controller
                 // Password benar, set sesi dan redirect ke halaman tertentu
                 $this->session->set([
                     'isLogin' => true,
-                    'userId' => $user['iduser'],
+                    'iduser' => $user['iduser'],
                     'username' => $user['username'],
                 ]);
                 return redirect()->to('/home'); // Ganti dengan halaman yang sesuai
@@ -141,7 +143,17 @@ class AuthController extends Controller
     //     return redirect()->to('/login');
     // }
 
+    public function tambah()
+    {
+        $judul = $this->request->getPost('julud');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $lokasifile = $this->request->getFile('lokasifile');
+        $tanggalunggahan = $this->request->getPost('tanggalunggahan');
 
+        $newName = null; // Inisialisasi $newName dengan null
+
+
+    }
 
 
 

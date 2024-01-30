@@ -26,7 +26,7 @@ class Album extends Migration
             'tanggaldibuat' => [
                 'type' => 'DATE',
             ],
-            'userid'        => [
+            'iduser'        => [
                 'type'       => 'INT',
                 'unsigned'   => true,
             ],
