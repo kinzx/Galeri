@@ -27,6 +27,9 @@
                         <a class="nav-link active" href=" <?= base_url('/tambah') ?> ">Tambah</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('/kelolafoto') ?>">Kelola foto</a>
+                    </li>
+                    <li class="nav-item">
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" style="border-radius: 50px;" placeholder="Search" aria-label="Search">
                         </form>
@@ -38,7 +41,7 @@
         </div>
     </nav>
 
-    
+
     <div class="container text-center ">
         <div class="row g-0 ">
             <div class="w-50 ">
@@ -54,17 +57,15 @@
                 <div class="text-center"><span class="imgur-link"></span></div>
             </div>
             <div class="col-sm-6 col-md-4 mx-auto">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label d-flex justify-content-start">Judul</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label d-flex justify-content-start">Deskripsi</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit" class="btn btn-dark d-flex justify-content-start">Upload</button>
-                </form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label d-flex justify-content-start">Judul</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label d-flex justify-content-start">Deskripsi</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-dark d-flex justify-content-start">Upload</button>
             </div>
         </div>
     </div>

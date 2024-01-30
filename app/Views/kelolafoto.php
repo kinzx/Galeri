@@ -50,7 +50,13 @@
     <div class="d1">
         <div class="container">
 
-            <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Home</h1>
+
+            <div class="d-flex justify-content-between align-items-end">
+                <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Kelolafoto</h1>
+                <div class="p-2 bd-highlight"><button type="button" class="btn btn-dark">Dark</button> </div>
+            </div>
+
+
 
             <hr class="mt-2 mb-5">
 

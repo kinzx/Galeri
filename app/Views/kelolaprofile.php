@@ -35,7 +35,7 @@
                 </ul>
                 <a class="nav-link" href="#">Logout</a>
             </div>
-        </div>
+        </div> 
     </nav>
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">

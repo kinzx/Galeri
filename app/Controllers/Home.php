@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('index');
+        return view ('index');
     }
 
     public function kelola(): string
@@ -33,14 +33,10 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
-
-    public function register(): string
+    public function kelolafoto(): string
     {
-        return view('register');
+        return view('kelolafoto');
     }
 
-    public function login(): string
-    {
-        return view('login');
-    }
+    
 }
