@@ -143,17 +143,7 @@ class AuthController extends Controller
     //     return redirect()->to('/login');
     // }
 
-    public function tambah()
-    {
-        $judul = $this->request->getPost('julud');
-        $deskripsi = $this->request->getPost('deskripsi');
-        $lokasifile = $this->request->getFile('lokasifile');
-        $tanggalunggahan = $this->request->getPost('tanggalunggahan');
-
-        $newName = null; // Inisialisasi $newName dengan null
-
-
-    }
+   
 
 
 

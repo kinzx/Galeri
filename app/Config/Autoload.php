@@ -59,7 +59,7 @@ class Autoload extends AutoloadConfig
      * were being autoloaded through a namespace.
      *
      * Prototype:
-     *   $classmap = [
+     *   $classmap = [a
      *       'MyClass'   => '/path/to/class/file.php'
      *   ];
      *

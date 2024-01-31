@@ -15,22 +15,22 @@ class Foto extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'judul'            => [
+            'judul' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 225,
             ],
-            'deskripsi'        => [
+            'deskripsi' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 225,
             ],
-            'tanggalunggahan'  => [
+            'tanggalunggahan' => [
                 'type' => 'DATE',
             ],
-            'lokasifoto'       => [
+            'lokasifoto' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'iduser'           => [
+            'iduser' => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'   => true,

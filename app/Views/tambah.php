@@ -41,34 +41,35 @@
         </div>
     </nav>
 
-
-    <div class="container text-center ">
-        <div class="row g-0 ">
-            <div class="w-50 ">
-                <div class="dropzone uploadfuzone fuzone">
-                    <div class="row">
-                        <div class="col mx-auto">
-                            <div class="fu-text"> <span><i class="fa fa-picture-o"></i> Click here file to upload</span> </div>
+    <form action="<?= base_url('/tambah') ?>" method="post"  enctype="multipart/form-data">
+        <div class="container text-center ">
+            <div class="row g-0 ">
+                <div class="w-50 ">
+                    <div class="dropzone uploadfuzone fuzone">
+                        <div class="row">
+                            <div class="col mx-auto">
+                                <div class="fu-text"> <span><i class="fa fa-picture-o"></i> Click here file to upload</span> </div>
+                            </div>
                         </div>
+                        <input type="file" class="form-control" id="foto" name="foto">
                     </div>
-                    <input type="file" class="input" accept="image/*">
+                    <div class="status"></div>
+                    <div class="text-center"><span class="imgur-link"></span></div>
                 </div>
-                <div class="status"></div>
-                <div class="text-center"><span class="imgur-link"></span></div>
-            </div>
-            <div class="col-sm-6 col-md-4 mx-auto">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label d-flex justify-content-start">Judul</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div class="col-sm-6 col-md-4 mx-auto">
+                    <div class="mb-3">
+                        <label class="form-label d-flex justify-content-start">Judul</label>
+                        <input type="text" class="form-control" id="judul" name="judul">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label d-flex justify-content-start">Deskripsi</label>
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                    </div>
+                    <button type="submit" class="btn btn-dark d-flex justify-content-start">Upload</button>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label d-flex justify-content-start">Deskripsi</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <button type="submit" class="btn btn-dark d-flex justify-content-start">Upload</button>
             </div>
         </div>
-    </div>
+    </form>
 
 
 

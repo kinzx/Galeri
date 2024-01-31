@@ -6,13 +6,14 @@ use CodeIgniter\Model;
 
 class FotoModel extends Model
 {
-    protected $table            = 'foto';
-    protected $primaryKey       = 'idfoto';
+    protected $table = 'foto';
+    protected $primaryKey = 'idfoto';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['judul','deskripsi','tanggalunggah','lokasifoto','iduser'];
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false;
+    protected $protectFields = true;
+    protected $allowedFields = ['judul', 'deskripsi', 'tanggalunggahan', 'lokasifoto', 'iduser'];
+
 
     // Dates
     protected $useTimestamps = false;
