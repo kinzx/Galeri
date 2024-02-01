@@ -41,7 +41,7 @@
                 </a>
 
 
-                <a class="nav-link " href="#">Logout</a>
+                <a class="nav-link " href="<?= base_url('/logout') ?>" style="color: black;">Logout</a>
             </div>
         </div>
     </nav>
