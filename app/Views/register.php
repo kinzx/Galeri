@@ -49,7 +49,7 @@
                                         <input type="password" name="password" class="form-control form-control-lg" style="border-radius: 5rem;" />
                                     </div>
 
-                                    <button class="btn btn-outline-dark btn-lg px-5" name="register" type="submit" style="border-radius: 5rem;">Register</button>
+                                    <button class="btn btn-outline-dark btn-lg px-5 mb-3" name="register" type="submit" style="border-radius: 5rem;">Register</button>
 
                                     <div>
                                         <p class="mb-0">already have an account? <a href="<?= base_url('/login') ?>" class="text-black-50 fw-bold">Login</a>
