@@ -11,7 +11,7 @@ class FotoController extends BaseController
 
     public function __construct()
     {
-        $this->fotomodel = new \App\Models\Fotomodel();
+        $this->fotoModel = new \App\Models\FotoModel();
 
         // Meload session
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
@@ -57,6 +57,13 @@ class FotoController extends BaseController
     
         $fotoModel->insert($data);
     
-        return redirect()->to('/uploadForm')->with('success', 'Photo uploaded successfully.');
+        return redirect()->to('/home')->with('success', 'Photo uploaded successfully.');
+    }
+
+    public function home()
+    {
+        $data['gambarDariDatabase'] = $this->fotoModel->findAll();
+        
+        return view('welcome_message', $data);
     }
 }

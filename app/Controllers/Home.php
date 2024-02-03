@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
+use App\Models\FotoModel;
+
 class Home extends BaseController
 {
     public function index(): string
@@ -29,10 +32,7 @@ class Home extends BaseController
         return view('profile');
     }
 
-    public function home(): string
-    {
-        return view('welcome_message');
-    }
+    
     public function kelolafoto(): string
     {
         return view('kelolafoto');

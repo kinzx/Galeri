@@ -10,7 +10,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/tambah', 'Home::tambah');
 $routes->get('/tes', 'Home::tes');
 $routes->get('/profile', 'Home::profile');
-$routes->get('/home', 'Home::home');
+$routes->get('/home', 'FotoController::home');
 
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::valid_register');

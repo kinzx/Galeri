@@ -55,68 +55,23 @@
             <hr class="mt-2 mb-5">
 
             <div class="row text-center text-lg-start">
+            <!-- Loop through the images and display them -->
+            <?php foreach ($gambarDariDatabase as $gambar) : ?>
+    <div class="col-lg-3 col-md-4 col-6">
+        <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <?php
+            $gambarPath = base_url('uploads/' . $gambar['lokasifoto']);
+            ?>
+            <p><?= $gambar['judul'] ?></p>
+            <p><?= $gambar['deskripsi'] ?></p>
+            <img class="img-fluid rounded" src="<?= $gambarPath ?>" alt="">
+            
+        </a>
+    </div>
+<?php endforeach; ?>
 
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img class="img-fluid rounded " src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded " src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="#" class="d-block mb-4 h-100">
-                        <img class="img-fluid rounded" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">
-                    </a>
-                </div>
-            </div>
+
+</div>
 
         </div>
     </div>
