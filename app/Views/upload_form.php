@@ -1,30 +1,4 @@
-<?php if (session()->has('success')): ?>
-    <p>
-        <?= session('success') ?>
-    </p>
-<?php endif; ?>
 
-<?php echo form_open_multipart('/uploadForm'); ?>
-
-<label for="judul">Title:</label>
-<input type="text" name="judul" value="<?= old('judul') ?>" required>
-<br>
-
-<label for="deskripsi">Description:</label>
-<textarea name="deskripsi" required><?= old('deskripsi') ?></textarea>
-<br>
-
-<label for="lokasifile">Choose Photo:</label>
-<input type="file" name="lokasifile" accept="image/*" required>
-<br>
-
-<button type="submit">Upload</button>
-
-<?php echo form_close(); ?>
-
-<?php if (isset($validation)): ?>
-    <?= $validation->listErrors() ?>
-<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,37 +47,39 @@
         </div>
     </nav>
 
-    <form action="<?= base_url('/tambah') ?>" method="post" enctype="multipart/form-data">
-        <div class="container text-center ">
-            <div class="row g-0 ">
-                <div class="w-50 ">
-                    <div class="dropzone uploadfuzone fuzone">
-                        <div class="row">
-                            <div class="col mx-auto">
-                                <div class="fu-text"> <span><i class="fa fa-picture-o"></i> Click here file to
-                                        upload</span> </div>
-                            </div>
-                        </div>
-                        <input type="file" class="form-control" id="foto" name="foto">
-                    </div>
-                    <div class="status"></div>
-                    <div class="text-center"><span class="imgur-link"></span></div>
-                </div>
-                <div class="col-sm-6 col-md-4 mx-auto">
-                    <div class="mb-3">
-                        <label class="form-label d-flex justify-content-start">Judul</label>
-                        <input type="text" class="form-control" value="<?= old('judul') ?> name=" judul">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label d-flex justify-content-start">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                    </div>
-                    <button type="submit" class="btn btn-dark d-flex justify-content-start">Upload</button>
-                </div>
-            </div>
-        </div>
-    </form>
+    <!-- Check for success message -->
+<?php if (session()->has('success')): ?>
+    <div class="alert alert-success" role="alert">
+        <?= session('success') ?>
+    </div>
+<?php endif; ?>
 
+<!-- Form using Bootstrap 5 -->
+<form action="<?= base_url('/uploadForm') ?>" method="post" enctype="multipart/form-data" class="mt-4">
+    <div class="mb-3">
+        <label for="judul" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="judul" name="judul" value="<?= old('judul') ?>" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="deskripsi" class="form-label">Description:</label>
+        <textarea class="form-control" id="deskripsi" name="deskripsi" required><?= old('deskripsi') ?></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="lokasifile" class="form-label">Choose Photo:</label>
+        <input type="file" class="form-control" id="lokasifile" name="lokasifile" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<!-- Display validation errors if any -->
+<?php if (isset($validation)): ?>
+    <div class="alert alert-danger mt-3" role="alert">
+        <?= $validation->listErrors() ?>
+    </div>
+<?php endif; ?>
 
 
 
@@ -112,5 +88,5 @@
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/custom.js') ?>"></script>
 </body>
-
+ 
 </html>

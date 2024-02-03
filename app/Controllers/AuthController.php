@@ -24,7 +24,7 @@ class AuthController extends Controller
     }
     public function login()
     {
-        return view('login');
+        return view('auth/login');
     }
 
     public function valid_login()
@@ -78,7 +78,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('auth/register');
     }
 
     public function valid_register()

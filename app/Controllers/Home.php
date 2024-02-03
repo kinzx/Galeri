@@ -35,7 +35,7 @@ class Home extends BaseController
     
     public function kelolafoto(): string
     {
-        return view('kelolafoto');
+        return view('kelola/kelolafoto');
     }
 
     

@@ -64,7 +64,7 @@
             ?>
             <p><?= $gambar['judul'] ?></p>
             <p><?= $gambar['deskripsi'] ?></p>
-            <img class="img-fluid rounded" src="<?= $gambarPath ?>" alt="">
+            <img class="img-fluid rounded" st src="<?= $gambarPath ?>" alt="">
             
         </a>
     </div>

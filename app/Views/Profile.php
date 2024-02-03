@@ -27,7 +27,7 @@
                         <a class="nav-link" aria-current="page" href="<?= base_url('/home') ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('/tambah') ?>">Tambah</a>
+                        <a class="nav-link" href="<?= base_url('/uploadForm') ?>">Tambah</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('/tambah') ?>">Kelola foto</a>
@@ -38,7 +38,7 @@
                         </form>
                     </li>
                 </ul>
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="<?= base_url('/logout')?>">Logout</a>
             </div>
         </div>
     </nav>
