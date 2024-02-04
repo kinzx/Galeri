@@ -48,6 +48,7 @@ class FotoController extends BaseController
         // Save to the database
         $fotoModel = new \App\Models\FotoModel();
         $data = [
+            'iduser' => $this->session->get('iduser'),
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'tanggalunggahan' => date('Y-m-d'),

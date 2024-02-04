@@ -32,6 +32,11 @@ class Home extends BaseController
         return view('profile');
     }
 
+    public function kelolaprofile(): string
+    {
+        return view('kelola/kelolaprofile');
+    }
+
     
     public function kelolafoto(): string
     {

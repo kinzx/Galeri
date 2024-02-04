@@ -8,17 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    
+
     <link href="<?= base_url('css/layout.css') ?>" rel="stylesheet">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
 
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,11 +36,13 @@
                     </li>
                     <li class="nav-item">
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" style="border-radius: 50px" placeholder="Search" aria-label="Search" />
+                            <input class="form-control me-2" type="search" style="border-radius: 50px"
+                                placeholder="Search" aria-label="Search" />
                         </form>
                     </li>
                 </ul>
-                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45" height="45" /></a>
+                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
+                        height="45" /></a>
                 <a class="nav-link" href="#">Logout</a>
             </div>
         </div>
@@ -46,9 +50,12 @@
 
     <div class="container">
         <div class="" style="text-align: center;">
-            <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="90px" height="90px" class="rounded-circle">
+            <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="90px" height="90px"
+                class="rounded-circle">
             <h4>Kinar Aurasae</h4>
-            <button class="btn btn-dark mb-2" style="border-radius: 50px;">Kelola Akun</button>
+            <a href="<?= base_url('/kelolaprofile')?>">
+                <button class="btn btn-dark mb-2" style="border-radius: 50px;">Kelola Akun</button>
+            </a>
         </div>
     </div>
 

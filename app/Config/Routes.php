@@ -18,7 +18,9 @@ $routes->get('/login', 'AuthController::login');
 $routes->post('/login', 'AuthController::valid_login');
 $routes->get('/logout', 'AuthController::logout');
 
+
 $routes->get('/kelola', 'Home::kelola');
+$routes->get('/kelolaprofile', 'Home::kelolaprofile');
 $routes->get('/kelolafoto', 'home::kelolafoto');
 $routes->post('/tambah', 'FotoController::creat');
 
