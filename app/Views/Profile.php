@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
-            <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45">
+            <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,18 +27,19 @@
                         <a class="nav-link" aria-current="page" href="<?= base_url('/home') ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('/uploadForm') ?>">Tambah</a>
+                        <a class="nav-link " href=" <?= base_url('/uploadForm') ?> ">Tambah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('/tambah') ?>">Kelola foto</a>
+                        <a class="nav-link" href="<?= base_url('/kelolafoto') ?>">Kelola foto</a>
                     </li>
                     <li class="nav-item">
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" style="border-radius: 50px" placeholder="Search" aria-label="Search" />
                         </form>
                     </li>
                 </ul>
-                <a class="nav-link" href="<?= base_url('/logout')?>">Logout</a>
+                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45" height="45" /></a>
+                <a class="nav-link" href="#">Logout</a>
             </div>
         </div>
     </nav>

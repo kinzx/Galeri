@@ -12,8 +12,11 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
+        rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/styles.css') ?>" rel="stylesheet" />
@@ -29,11 +32,12 @@
         <div class="masthead-content text-white">
             <div class="container-fluid px-4 px-lg-0">
                 <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
-                <p class="mb-5">We're working hard to finish the development of this site. Sign up below to receive updates and to be notified when we launch!</p>
+                <p class="mb-5">We're working hard to finish the development of this site. Sign up below to receive
+                    updates and to be notified when we launch!</p>
                 <form id="contactForm">
                     <div class="row input-group-newsletter">
                         <div class="col-auto">
-                            
+
                             <a class="btn btn-primary btn-lg" href="<?= base_url('/login') ?>">Login</a>
                         </div>
                     </div>

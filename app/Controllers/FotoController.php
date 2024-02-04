@@ -54,16 +54,16 @@ class FotoController extends BaseController
             'lokasifoto' => $newName,
             // 'iduser' => $this->session->get('iduser'), // Memastikan 'iduser' sudah diset
         ];
-    
+
         $fotoModel->insert($data);
-    
-        return redirect()->to('/home')->with('success', 'Photo uploaded successfully.');
+
+        return redirect()->to('/uploadForm')->with('success', 'Photo uploaded successfully.');
     }
 
     public function home()
     {
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
-        
+
         return view('welcome_message', $data);
     }
 }
