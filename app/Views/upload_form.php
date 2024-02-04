@@ -38,9 +38,8 @@
                         </form>
                     </li>
                 </ul>
-                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
-                        height="45" /></a>
-                <a class="nav-link" href="#">Logout</a>
+                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45" height="45" /></a>
+                <a class="nav-link" href="<?= base_url('/logout')?>">Logout</a>
             </div>
         </div>
     </nav>

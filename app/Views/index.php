@@ -31,14 +31,14 @@
     <div class="masthead">
         <div class="masthead-content text-white">
             <div class="container-fluid px-4 px-lg-0">
-                <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
+                <h1 class="fst-italic lh-1 mb-4">Glaria</h1>
                 <p class="mb-5">We're working hard to finish the development of this site. Sign up below to receive
                     updates and to be notified when we launch!</p>
                 <form id="contactForm">
                     <div class="row input-group-newsletter">
                         <div class="col-auto">
-
-                            <a class="btn btn-primary btn-lg" href="<?= base_url('/login') ?>">Login</a>
+                            
+                            <a class="btn btn-dark  btn-lg" href="<?= base_url('/login') ?>">Login</a>
                         </div>
                     </div>
                 </form>
@@ -47,8 +47,6 @@
     </div>
     <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-facebook-f"></i></a>
             <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
