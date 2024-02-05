@@ -12,7 +12,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -49,6 +49,8 @@
             <?= session('success') ?>
         </div>
     <?php endif; ?>
+    <?= isset($validation) ? '<p style="color: red;">' . $validation->getError('lokasifile') . '</p>' : '' ?>
+
     <form action="<?= base_url('/uploadForm') ?>" method="post" enctype="multipart/form-data" class="mt-4">
         <section class="intro">
             <div class="mask d-flex align-items-center h-100 gradient-custom">
@@ -63,7 +65,6 @@
                                                 <input type="file" class="form-control" id="image" name="lokasifile"
                                                     accept="image/*" required />
                                                 <div class="img-preview"></div>
-                                                <!-- <i class="fas fa-laptop" style="color: #d6d6d6"></i> -->
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-xl-4 text-center">
@@ -71,12 +72,14 @@
                                                 <label for="judul" class="form-label">Title:</label>
                                                 <input type="text" class="form-control" id="judul" name="judul"
                                                     value="<?= old('judul') ?>" required />
+                                                <?= isset($validation) ? '<p style="color: red;">' . $validation->getError('judul') . '</p>' : '' ?>
                                             </div>
 
                                             <div class="form-outline mb-4">
                                                 <label for="deskripsi" class="form-label">Description:</label>
                                                 <textarea class="form-control" id="deskripsi" name="deskripsi">
-<?= old('deskripsi') ?></textarea>
+                                                    <?= old('deskripsi') ?>
+                                                </textarea>
                                             </div>
 
                                             <div class="text-center">

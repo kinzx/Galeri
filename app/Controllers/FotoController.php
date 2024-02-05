@@ -15,6 +15,7 @@ class FotoController extends BaseController
 
         // Meload session
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
+        $this->validation = \Config\Services::validation(); // Load the validation library
     }
 
     public function uploadForm()
@@ -25,12 +26,27 @@ class FotoController extends BaseController
 
     public function upload()
     {
-        // Validate the form data
         $validationRules = [
             'judul' => 'required',
-            'deskripsi' => 'required',
-            'lokasifile' => 'uploaded[lokasifile]|max_size[lokasifile,1024]|mime_in[lokasifile,image/jpg,image/jpeg,image/png]',
+            'lokasifile' => [
+                'uploaded[lokasifile]',
+                'max_size[lokasifile,1024]', // Maksimal 1 MB
+                'mime_in[lokasifile,image/jpg,image/jpeg,image/png]', // Hanya izinkan tipe file gambar
+            ],
         ];
+        $validationMessages = [
+            'judul' => [
+                'required' => 'Field Judul wajib diisi.',
+            ],
+            'lokasifile' => [
+                'uploaded' => 'Terjadi kesalahan saat mengupload gambar.',
+                'max_size' => 'Ukuran gambar terlalu besar. Maksimal 1 MB yang diizinkan.',
+                'mime_in' => 'Tipe file gambar tidak diizinkan. Hanya gambar JPG, JPEG, atau PNG yang diizinkan.',
+            ],
+        ];
+
+
+        $this->validator->setRules($validationRules, $validationMessages);
 
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('validation', $this->validator);

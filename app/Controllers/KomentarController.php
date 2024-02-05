@@ -14,7 +14,6 @@ class KomentarController extends BaseController
         // Inisialisasi KomentarfotoModel
         $this->KomentarfotoModel = new KomentarfotoModel();
 
-
         // Meload session
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
     }
