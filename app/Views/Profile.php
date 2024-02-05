@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -43,7 +43,7 @@
                 </ul>
                 <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
                         height="45" /></a>
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
             </div>
         </div>
     </nav>
@@ -53,7 +53,7 @@
             <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="90px" height="90px"
                 class="rounded-circle">
             <h4>Kinar Aurasae</h4>
-            <a href="<?= base_url('/kelolaprofile')?>">
+            <a href="<?= base_url('/kelolaprofile') ?>">
                 <button class="btn btn-dark mb-2" style="border-radius: 50px;">Kelola Akun</button>
             </a>
         </div>

@@ -21,7 +21,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
-            <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
+            <a href="<?= base_url('/home') ?>">
+                <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -62,8 +64,7 @@
                     <div class="col-lg-3 col-md-4 col-6"> <a data-bs-toggle="modal"
                             data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                             <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                            <img class="img-fluid rounded mb-3" style=" height: 200px;"
-                                src="<?= $gambarPath ?>" alt="">
+                            <img class="img-fluid rounded mb-3" style=" height: 200px;" src="<?= $gambarPath ?>" alt="">
                         </a> </div>
                 <?php endforeach; ?>
             </div>
@@ -71,7 +72,7 @@
 
         <!-- Modal for each image -->
         <?php foreach ($gambarDariDatabase as $gambar): ?>
-            
+
             <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
@@ -105,7 +106,8 @@
 
                                             </div>
                                             <button type="button" class="btn btn-outline"
-                                                style="border-radius: 50px;">Simpan</button>
+                                                style="border-radius: 50px;">Simpan
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -121,18 +123,22 @@
 
                                         </div>
                                         <div class="komentar">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Recipient's username"
-                                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                                <span class="input-group-text" id="basic-addon2"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" stroke="currentColor" width="10" height="10"
-                                                        class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-                                                    </svg>
-                                                </span>
-                                            </div>
+                                            <form action="/home/<?= $gambar['idfoto'] ?>" method="post">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="deskripsi"
+                                                        placeholder="Tambahkan komentar..."
+                                                        aria-label="Tambahkan komentar..." aria-describedby="basic-addon2">
+                                                    <input type="hidden" name="fotoid">
+                                                    <button type="submit" class="input-group-text" id="basic-addon2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            width="10" height="10" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

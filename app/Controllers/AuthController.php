@@ -112,40 +112,6 @@ class AuthController extends Controller
 
 
 
-    // public function valid_register()
-    // {
-    //     // Tangkap data dari form
-    //     $data = $this->request->getPost();
-
-    //     // Jalankan validasi
-    //     $this->validation->run($data, 'register');
-
-    //     // Cek errornya
-    //     $errors = $this->validation->getErrors();
-
-    //     // Jika ada error kembalikan ke halaman register
-    //     if ($errors) {
-    //         session()->setFlashdata('error', $errors);
-    //         return redirect()->to('/register');
-    //     }
-
-    //     $password = password_hash($data['password'], PASSWORD_BCRYPT); // Hash password
-
-    //     $userModel = new UserModel();
-
-    //     $userModel->save([
-    //         'username' => $data['username'],
-    //         'email' => $data['email'],
-    //         'password' => $password, // Simpan password yang sudah di-hash
-    //     ]);
-
-    //     session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan login');
-    //     return redirect()->to('/login');
-    // }
-
-   
-
-
 
 
     public function logout()

@@ -12,7 +12,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -38,8 +38,9 @@
                         </form>
                     </li>
                 </ul>
-                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45" height="45" /></a>
-                <a class="nav-link" href="<?= base_url('/logout')?>">Logout</a>
+                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
+                        height="45" /></a>
+                <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
             </div>
         </div>
     </nav>

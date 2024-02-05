@@ -67,4 +67,5 @@ class FotoController extends BaseController
 
         return view('welcome_message', $data);
     }
+
 }
