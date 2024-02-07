@@ -91,8 +91,14 @@ class AuthController extends Controller
             'email' => 'required|valid_email|is_unique[user.email]',
             'password' => 'required|min_length[8]',
         ];
-
-        if (!$this->validate($rules)) {
+        
+        $errors = [
+            'password.max_length' => 'Password terlalu panjang. Maksimum 255 karakter diperbolehkan.',
+            'email.is_unique' => 'Alamat email ini sudah terdaftar. Silakan gunakan alamat email lain.',
+        ];
+        
+        if (!$this->validate($rules, $errors)) {
+            // Menangani kesalahan validasi
             return redirect()->to('/register')->withInput()->with('validation', $this->validator);
         }
 
@@ -109,9 +115,6 @@ class AuthController extends Controller
         session()->setFlashdata('login', 'Registration successful. Please login.');
         return redirect()->to('/login');
     }
-
-
-
 
 
     public function logout()

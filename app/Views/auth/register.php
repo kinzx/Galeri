@@ -24,12 +24,12 @@
                                 <p class="text-black-50 mb-5">create an account!</p>
                                 <?php
                                 $session = session();
-                                $error = $session->getFlashdata('error');
+                                $errors = $session->getFlashdata('errors');
                                 ?>
-                                <?php if ($error) { ?>
+                                <?php if ($errors) { ?>
                                     <p style="color:red">Terjadi Kesalahan:
                                     <ul>
-                                        <?php foreach ($error as $e) { ?>
+                                        <?php foreach ($errors as $e) { ?>
                                             <li>
                                                 <?php echo $e ?>
                                             </li>

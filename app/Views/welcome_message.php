@@ -8,14 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('/css/layout.css') ?>" rel="stylesheet">
-    <style>
-        .image-grid .grid-item img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link href="<?= base_url('css/tes.css') ?>" rel="stylesheet">
+
 </head>
 
 <body>
@@ -57,17 +53,12 @@
 
     <div class="d1">
         <div class="container">
-            <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Home</h1>
-            <hr class="mt-2 mb-5">
-            <div class="row text-center text-lg-start">
-                <?php foreach ($gambarDariDatabase as $gambar): ?>
-                    <div class="col-lg-3 col-md-4 col-6"> <a data-bs-toggle="modal"
-                            data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
-                            <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                            <img class="img-fluid rounded mb-3" style=" height: 200px;" src="<?= $gambarPath ?>" alt="">
-                        </a> </div>
-                <?php endforeach; ?>
-            </div>
+            <?php foreach ($gambarDariDatabase as $gambar): ?>
+                <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
+                    <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
+                    <img class="mb-3 rounded-4" src="<?= $gambarPath ?>" alt="">
+                </a>
+            <?php endforeach; ?>
         </div>
 
         <!-- Modal for each image -->
