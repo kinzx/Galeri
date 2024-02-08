@@ -31,27 +31,7 @@ class FotoController extends BaseController
 
     public function upload()
     {
-<<<<<<< Updated upstream
-        // $validationRules = [
-        //     'judul' => 'required',
-        //     'lokasifile' => [
-        //         'uploaded[lokasifile]',
-        //         'max_size[lokasifile,1024]', // Maksimal 1 MB
-        //         'mime_in[lokasifile,image/jpg,image/jpeg,image/png]', // Hanya izinkan tipe file gambar
-        //     ],
-        // ];
 
-
-<<<<<<< Updated upstream
-        // $this->validator->setRules($validationRules);
-=======
->>>>>>> Stashed changes
-
-        // if (!$this->validate($this->request, $validationRules)) {
-        //     return redirect()->back()->withInput()->with('validation', $this->validator);
-        // }
-=======
->>>>>>> Stashed changes
 
         if (
             !$this->validate([
@@ -93,7 +73,7 @@ class FotoController extends BaseController
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
         $data['komentar'] = $komentarModel->findAll();
-        return view('welcome_message', $data);
+        return view('home', $data);
 
         return view('home', $data);
     }

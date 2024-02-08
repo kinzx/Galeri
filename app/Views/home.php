@@ -9,38 +9,16 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
-
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
-<<<<<<< Updated upstream
     <link href="<?= base_url('css/tes.css') ?>" rel="stylesheet">
 
-=======
-    <link href="<?= base_url('/css/layout.css') ?>" rel="stylesheet">
-    <style>
-        .image-grid .grid-item img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .gambar-container {
-            margin-bottom: 10px;
-            /* Jarak antara setiap gambar */
-        }
-
-        .gambar-container img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
->>>>>>> Stashed changes
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
-            <a href="<?= base_url('/home') ?>">
-                <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
-            </a>
+            <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -57,13 +35,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('/kelolafoto') ?>">Kelola foto</a>
                     </li>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" style="border-radius: 50px"
-                                placeholder="Search" aria-label="Search" />
-                        </form>
-                    </li>
                 </ul>
+                <form class="d-flex" style="flex: 1;">
+                    <!-- Menggunakan flex untuk mengisi ruang tersisa -->
+                    <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
+                        placeholder="Search" aria-label="Search" />
+                </form>
                 <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
                         height="45" /></a>
                 <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
