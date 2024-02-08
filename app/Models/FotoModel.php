@@ -8,6 +8,8 @@ class FotoModel extends Model
 {
     protected $table = 'foto';
     protected $primaryKey = 'idfoto';
+    
+
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;

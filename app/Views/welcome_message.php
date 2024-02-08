@@ -11,8 +11,28 @@
     <link href="<?= base_url('css/back.css') ?>" rel="stylesheet">
 
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
+<<<<<<< Updated upstream
     <link href="<?= base_url('css/tes.css') ?>" rel="stylesheet">
 
+=======
+    <link href="<?= base_url('/css/layout.css') ?>" rel="stylesheet">
+    <style>
+        .image-grid .grid-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gambar-container {
+            margin-bottom: 10px;
+            /* Jarak antara setiap gambar */
+        }
+
+        .gambar-container img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -110,13 +130,19 @@
                                             <p>
                                                 <?= $gambar['deskripsi'] ?>
                                             </p>
-                                            <h6>Komentar</h6>
-                                            <hr>
-
                                         </div>
                                         <div class="komentar">
+                                            <h6>Komentar</h6>
+                                            <hr>
+                                            <?php foreach ($komentar as $k):
+                                                if ($k['fotoid'] == $gambar['idfoto']): ?>
+                                                    <li>
+                                                        <?= $k['deskripsi']; ?>
+                                                    </li>
+                                                <?php endif; endforeach; ?>
+                                            <hr>
                                             <form action="/home/<?= $gambar['idfoto'] ?>" method="post">
-                                                <div class="input-group mb-3">
+                                                <div class="input-group mb-3 ">
                                                     <input type="text" class="form-control" name="deskripsi"
                                                         placeholder="Tambahkan komentar..."
                                                         aria-label="Tambahkan komentar..." aria-describedby="basic-addon2">

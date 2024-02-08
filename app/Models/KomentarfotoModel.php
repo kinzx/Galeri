@@ -13,6 +13,10 @@ class KomentarfotoModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = ['fotoid', 'deskripsi', 'tanggalunggahan', 'lokasifoto', 'userid'];
+    public function getKomentarByFotoId($fotoid)
+    {
+        return $this->where('fotoid', $fotoid)->findAll();
+    }
 
     // Dates
     protected $useTimestamps = false;

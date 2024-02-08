@@ -41,7 +41,10 @@ class FotoController extends BaseController
         // ];
 
 
+<<<<<<< Updated upstream
         // $this->validator->setRules($validationRules);
+=======
+>>>>>>> Stashed changes
 
         // if (!$this->validate($this->request, $validationRules)) {
         //     return redirect()->back()->withInput()->with('validation', $this->validator);
@@ -84,8 +87,9 @@ class FotoController extends BaseController
 
     public function home()
     {
+        $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
-
+        $data['komentar'] = $komentarModel->findAll();
         return view('welcome_message', $data);
     }
 }

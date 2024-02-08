@@ -28,6 +28,7 @@ class KomentarController extends BaseController
             'iduser' => $this->session->get('iduser'),
         ]);
 
-        return redirect()->to('/home') ;
+        return redirect()->to('/home');
     }
+
 }

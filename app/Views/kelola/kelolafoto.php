@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -64,7 +64,8 @@
                             data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                             <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
                             <img class="img-fluid rounded mb-3" style=" height: 200px;" src="<?= $gambarPath ?>" alt="">
-                        </a> </div>
+                        </a>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>

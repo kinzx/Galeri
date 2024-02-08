@@ -69,14 +69,24 @@
                                             <div class="form-outline mb-3">
                                                 <label for="judul" class="form-label">Title:</label>
                                                 <input type="text" class="form-control" id="judul" name="judul"
+<<<<<<< Updated upstream
                                                     value="<?= old('judul') ?>" />
+=======
+                                                    value="<?= old('judul') ?>" required />
+>>>>>>> Stashed changes
                                             </div>
 
                                             <div class="form-outline mb-4">
                                                 <label for="deskripsi" class="form-label">Description:</label>
+<<<<<<< Updated upstream
                                                 <input type="text" class="form-control" id="deskripsi" name="deskripsi"
                                                 <?= old('deskripsi') ?>
                                                 />
+=======
+                                                <textarea class="form-control" id="deskripsi" name="deskripsi">
+<?= old('deskripsi') ?>
+                                                </textarea>
+>>>>>>> Stashed changes
                                             </div>
 
                                             <div class="text-center">
