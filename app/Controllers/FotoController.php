@@ -92,13 +92,10 @@ class FotoController extends BaseController
     {
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
-<<<<<<< Updated upstream
         $data['komentar'] = $komentarModel->findAll();
         return view('welcome_message', $data);
-=======
 
         return view('home', $data);
->>>>>>> Stashed changes
     }
     public function delete($idfoto)
     {

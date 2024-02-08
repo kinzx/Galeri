@@ -45,10 +45,8 @@ class Home extends BaseController
     public function kelolafoto(): string
     {
         $iduser = $this->session->get('iduser');
-    
         // Menyimpan data gambar yang dimiliki oleh pengguna tertentu
         $data['gambarDariDatabase'] = $this->fotoModel->where('iduser', $iduser)->findAll();
-    
         return view('kelola/kelolafoto', $data);
     }
 
