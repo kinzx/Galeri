@@ -31,6 +31,7 @@ class FotoController extends BaseController
 
     public function upload()
     {
+<<<<<<< Updated upstream
         // $validationRules = [
         //     'judul' => 'required',
         //     'lokasifile' => [
@@ -49,6 +50,8 @@ class FotoController extends BaseController
         // if (!$this->validate($this->request, $validationRules)) {
         //     return redirect()->back()->withInput()->with('validation', $this->validator);
         // }
+=======
+>>>>>>> Stashed changes
 
         if (
             !$this->validate([
@@ -89,7 +92,18 @@ class FotoController extends BaseController
     {
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
+<<<<<<< Updated upstream
         $data['komentar'] = $komentarModel->findAll();
         return view('welcome_message', $data);
+=======
+
+        return view('home', $data);
+>>>>>>> Stashed changes
     }
+    public function delete($idfoto)
+    {
+        $this->fotoModel->delete($idfoto);
+        return redirect()->to('/kelolafoto');
+    }
+    
 }

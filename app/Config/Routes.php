@@ -23,6 +23,7 @@ $routes->get('/logout', 'AuthController::logout');
 $routes->get('/kelola', 'Home::kelola');
 $routes->get('/kelolaprofile', 'Home::kelolaprofile');
 $routes->get('/kelolafoto', 'home::kelolafoto');
+$routes->post('delete/(:num)', 'FotoController::delete/$1');
 $routes->post('/tambah', 'FotoController::creat');
 
 

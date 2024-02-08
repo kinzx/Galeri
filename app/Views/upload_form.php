@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('css/tambah.css') ?>">
-    <link href="<?= base_url('css/back.css') ?>" rel="stylesheet">
+    <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
 
 </head>
 
@@ -48,14 +48,14 @@
     </nav>
 
 
-    <form action="<?= base_url('/uploadForm') ?>" method="post" enctype="multipart/form-data" class="mt-4">
+    <form action="<?= base_url('/uploadForm') ?>" method="post" enctype="multipart/form-data" class="mt-4 ">
         <section class="intro">
             <div class="mask d-flex align-items-center h-100 gradient-custom">
-                <div class="container">
+                <div class="container ">
                     <div class="row justify-content-center">
                         <div class="col-12 col-xl-10">
-                            <div class="card">
-                                <div class="card-body p-5">
+                            <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                                <div class="card-body  ">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-md-6 col-xl-7">
                                             <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px">
@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-xl-4 text-center">
-                                            <?= $validation->listErrors() ?>
+
                                             <div class="form-outline mb-3">
                                                 <label for="judul" class="form-label">Title:</label>
                                                 <input type="text" class="form-control" id="judul" name="judul"
@@ -80,12 +80,16 @@
                                                 <label for="deskripsi" class="form-label">Description:</label>
 <<<<<<< Updated upstream
                                                 <input type="text" class="form-control" id="deskripsi" name="deskripsi"
+<<<<<<< Updated upstream
                                                 <?= old('deskripsi') ?>
                                                 />
 =======
                                                 <textarea class="form-control" id="deskripsi" name="deskripsi">
 <?= old('deskripsi') ?>
                                                 </textarea>
+>>>>>>> Stashed changes
+=======
+                                                    <?= old('deskripsi') ?> />
 >>>>>>> Stashed changes
                                             </div>
 
