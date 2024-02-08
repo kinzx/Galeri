@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('css/tambah.css') ?>">
+    <link href="<?= base_url('css/back.css') ?>" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -44,12 +46,7 @@
             </div>
         </div>
     </nav>
-    <?php if (session()->has('success')): ?>
-        <div class="alert alert-success" role="alert">
-            <?= session('success') ?>
-        </div>
-    <?php endif; ?>
-    <?= isset($validation) ? '<p style="color: red;">' . $validation->getError('lokasifile') . '</p>' : '' ?>
+
 
     <form action="<?= base_url('/uploadForm') ?>" method="post" enctype="multipart/form-data" class="mt-4">
         <section class="intro">
@@ -68,18 +65,18 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-xl-4 text-center">
+                                            <?= $validation->listErrors() ?>
                                             <div class="form-outline mb-3">
                                                 <label for="judul" class="form-label">Title:</label>
                                                 <input type="text" class="form-control" id="judul" name="judul"
-                                                    value="<?= old('judul') ?>" required />
-                                                <?= isset($validation) ? '<p style="color: red;">' . $validation->getError('judul') . '</p>' : '' ?>
+                                                    value="<?= old('judul') ?>" />
                                             </div>
 
                                             <div class="form-outline mb-4">
                                                 <label for="deskripsi" class="form-label">Description:</label>
-                                                <textarea class="form-control" id="deskripsi" name="deskripsi">
-                                                    <?= old('deskripsi') ?>
-                                                </textarea>
+                                                <input type="text" class="form-control" id="deskripsi" name="deskripsi"
+                                                <?= old('deskripsi') ?>
+                                                />
                                             </div>
 
                                             <div class="text-center">
@@ -97,11 +94,6 @@
             </div>
         </section>
     </form>
-    <?php if (isset($validation)): ?>
-        <div class="alert alert-danger mt-3" role="alert">
-            <?= $validation->listErrors() ?>
-        </div>
-    <?php endif; ?>
 
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>

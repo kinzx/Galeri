@@ -20,36 +20,41 @@ class FotoController extends BaseController
 
     public function uploadForm()
     {
+        session(); //Memulai sesi jika belum memulainya
         helper(['form']); // Tambahkan baris ini untuk memuat helper formulir
-        return view('upload_form');
+        $data = [
+            'title' => "Upload Foto",
+            'validation' => \Config\Services::Validation()
+        ];
+        return view('upload_form', $data);
     }
 
     public function upload()
     {
-        $validationRules = [
-            'judul' => 'required',
-            'lokasifile' => [
-                'uploaded[lokasifile]',
-                'max_size[lokasifile,1024]', // Maksimal 1 MB
-                'mime_in[lokasifile,image/jpg,image/jpeg,image/png]', // Hanya izinkan tipe file gambar
-            ],
-        ];
-        $validationMessages = [
-            'judul' => [
-                'required' => 'Field Judul wajib diisi.',
-            ],
-            'lokasifile' => [
-                'uploaded' => 'Terjadi kesalahan saat mengupload gambar.',
-                'max_size' => 'Ukuran gambar terlalu besar. Maksimal 1 MB yang diizinkan.',
-                'mime_in' => 'Tipe file gambar tidak diizinkan. Hanya gambar JPG, JPEG, atau PNG yang diizinkan.',
-            ],
-        ];
+        // $validationRules = [
+        //     'judul' => 'required',
+        //     'lokasifile' => [
+        //         'uploaded[lokasifile]',
+        //         'max_size[lokasifile,1024]', // Maksimal 1 MB
+        //         'mime_in[lokasifile,image/jpg,image/jpeg,image/png]', // Hanya izinkan tipe file gambar
+        //     ],
+        // ];
 
 
-        $this->validator->setRules($validationRules, $validationMessages);
+        // $this->validator->setRules($validationRules);
 
-        if (!$this->validate($validationRules)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        // if (!$this->validate($this->request, $validationRules)) {
+        //     return redirect()->back()->withInput()->with('validation', $this->validator);
+        // }
+
+        if (
+            !$this->validate([
+                'judul' => 'required'
+            ])
+        ) {
+            $validation = \Config\Services::validation();
+            // dd($validation);
+            return redirect()->to('/uploadForm')->withInput()->with('validation', $validation);
         }
 
         // Handle file upload
@@ -83,5 +88,4 @@ class FotoController extends BaseController
 
         return view('welcome_message', $data);
     }
-
 }

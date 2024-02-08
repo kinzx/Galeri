@@ -43,23 +43,23 @@ class Validation extends BaseConfig
         'password' => 'required|min_length[6]',
     ];
     
-    public $rules = [
-        'judul' => 'required|min_length[3]|max_length[255]',
-        'lokasifile' => 'uploaded[lokasifile]|max_size[lokasifile,1024]|mime_in[lokasifile,image/jpg,image/jpeg,image/png]',
-    ];
+    // public $rules = [
+    //     'judul' => 'required|min_length[3]|max_length[255]',
+    //     'lokasifile' => 'uploaded[lokasifile]|max_size[lokasifile,1024]|mime_in[lokasifile,image/jpg,image/jpeg,image/png]',
+    // ];
 
-    public $messages = [
-        'judul' => [
-            'required' => 'Field Judul wajib diisi.',
-            'min_length' => 'Judul minimal harus memiliki panjang setidaknya 3 karakter.',
-            'max_length' => 'Judul maksimal hanya dapat memiliki panjang 255 karakter.',
-        ],
-        'lokasifile' => [
-            'uploaded' => 'Terjadi kesalahan saat mengupload gambar.',
-            'max_size' => 'Ukuran gambar terlalu besar. Maksimal 1 MB yang diizinkan.',
-            'mime_in' => 'Tipe file gambar tidak diizinkan. Hanya gambar JPG, JPEG, atau PNG yang diizinkan.',
-        ],
-    ];
+    // public $messages = [
+    //     'judul' => [
+    //         'required' => 'Field Judul wajib diisi.',
+    //         'min_length' => 'Judul minimal harus memiliki panjang setidaknya 3 karakter.',
+    //         'max_length' => 'Judul maksimal hanya dapat memiliki panjang 255 karakter.',
+    //     ],
+    //     'lokasifile' => [
+    //         'uploaded' => 'Terjadi kesalahan saat mengupload gambar.',
+    //         'max_size' => 'Ukuran gambar terlalu besar. Maksimal 1 MB yang diizinkan.',
+    //         'mime_in' => 'Tipe file gambar tidak diizinkan. Hanya gambar JPG, JPEG, atau PNG yang diizinkan.',
+    //     ],
+    // ];
 
     // protected $validationRules = [
     //     'username'     => 'required|alpha_numeric|min_length[5]|max_length[225]|is_unique[user.username]',
