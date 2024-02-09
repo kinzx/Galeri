@@ -25,11 +25,14 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth/login');
+        
     }
 
     public function valid_login()
     {
         $data = $this->request->getPost();
+
+
 
         // Validasi login
         $validation = \Config\Services::validation();

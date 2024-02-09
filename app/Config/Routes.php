@@ -20,9 +20,9 @@ $routes->get('/logout', 'AuthController::logout');
 $routes->get('/kelolaprofile', 'Home::kelolaprofile');
 $routes->get('/kelolafoto', 'FotoController::kelolafoto');
 $routes->post('delete/(:num)', 'FotoController::delete/$1');
-$routes->post('edit/(:num)', 'FotoController::edit/$1'); // Ganti menjadi GET
+$routes->post('edit/(:num)', 'FotoController::edit/$1');
 $routes->post('update/(:any)', 'FotoController::update/$1'); // Tambahkan rute untuk menangani update foto
-// Menggunakan 'post' untuk mengedit foto
+$routes->get('like/(:num)', 'FotoController::like/$1');
 
 $routes->get('/uploadForm', 'FotoController::uploadForm');
 $routes->post('/uploadForm', 'FotoController::upload');

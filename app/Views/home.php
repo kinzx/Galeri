@@ -81,17 +81,14 @@
                                             <div class="d-flex align-items-center">
                                                 <img src="<?= base_url('/img/seele.jpeg') ?>" alt="Deskripsi gambar"
                                                     width="40" height="40" class="me-3  rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                    fill="currentColor" class="w-5 h-5 me-3" width="35" height="35">
-                                                    <path
-                                                        d="M13 4.5a2.5 2.5 0 1 1 .702 1.737L6.97 9.604a2.518 2.518 0 0 1 0 .792l6.733 3.367a2.5 2.5 0 1 1-.671 1.341l-6.733-3.367a2.5 2.5 0 1 1 0-3.475l6.733-3.366A2.52 2.52 0 0 1 13 4.5Z" />
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" width="40" height="40" stroke="currentColor"
-                                                    class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                                </svg>
+                                                <a href="<?= base_url('like/' . $gambar['idfoto']) ?>"
+                                                    class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" width="40"
+                                                        height="40" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                    </svg></a>
+
 
                                             </div>
                                             <button type="button" class="btn btn-outline"
@@ -100,14 +97,22 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col">
-                                            <h4>
-                                                <?= $gambar['judul'] ?>
-                                            </h4>
-                                            <p>
-                                                <?= $gambar['deskripsi'] ?>
-                                            </p>
+                                        <div class="card border-0" style="width: 23rem;">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item border-0">
+                                                    <h4>
+                                                        <?= $gambar['judul'] ?>
+                                                    </h4>
+                                                </li>
+                                                <li class="list-group-item border-0">
+                                                    <p>
+                                                        <?= $gambar['deskripsi'] ?>
+                                                    </p>
+                                                </li>
+                                                <li class="list-group-item border-0"></li>
+                                            </ul>
                                         </div>
+
                                         <div class="komentar">
                                             <h6>Komentar</h6>
                                             <hr>
