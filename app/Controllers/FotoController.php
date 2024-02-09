@@ -12,8 +12,6 @@ class FotoController extends BaseController
     public function __construct()
     {
         $this->fotoModel = new \App\Models\FotoModel();
-        $this->likefotoModel = new \App\Models\LikefotoModel();
-
         // Meload session
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
         $this->validation = \Config\Services::validation(); // Load the validation library
@@ -69,12 +67,12 @@ class FotoController extends BaseController
 
     public function home()
     {
+        session();
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
         $data['komentar'] = $komentarModel->findAll();
         return view('home', $data);
 
-        return view('home', $data);
     }
 
     public function kelolafoto()
@@ -87,7 +85,7 @@ class FotoController extends BaseController
             // Process the edit request
             return $this->editPhoto($data);
         }
-
+        
         return view('kelola/kelolafoto', $data);
     }
 
@@ -117,32 +115,6 @@ class FotoController extends BaseController
 
         // Redirect kembali ke halaman kelolafoto setelah pengeditan
         return redirect()->to('/kelolafoto')->with('success', 'Photo updated successfully.');
-    }
-
-    public function like($idfoto)
-    {
-        // Mendapatkan ID pengguna dari sesi
-        $iduser = $this->session->get('iduser');
-
-        // Cek apakah pengguna sudah melakukan like sebelumnya
-        $existingLike = $this->likefotoModel->where(['fotoid' => $idfoto, 'iduser' => $iduser])->first();
-
-        // Jika pengguna telah melakukan like sebelumnya, hapus like tersebut (dislike)
-        if ($existingLike) {
-            $this->likefotoModel->delete($existingLike['likeid']);
-            return redirect()->back()->with('success', 'Photo disliked successfully.');
-        }
-
-        // Tambahkan data like baru ke dalam tabel likefoto
-        $data = [
-            'fotoid' => $idfoto,
-            'iduser' => $iduser,
-            'tanggallike' => date('Y-m-d H:i:s')
-        ];
-        $this->likefotoModel->insert($data);
-
-        // Alihkan kembali ke halaman sebelumnya dengan pesan sukses
-        return redirect()->back()->with('success', 'Photo liked successfully.');
     }
 
 }

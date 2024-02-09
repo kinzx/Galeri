@@ -87,22 +87,17 @@
                                             
                                             <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>" method="post"
                                                 enctype="multipart/form-data" class="mt-4">
-                                                <div class="card" style="width: 18rem;">
+                                                <div class="card border-0" style="width: 23rem;">
                                                 <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item"><input type="text" name="judul" value="<?= $gambar['judul'] ?>"></li>
-                                                    <li class="list-group-item"><input type="text" name="deskripsi" value="<?= $gambar['deskripsi'] ?>"></li>
-                                                    <li class="list-group-item"><button type="submit">Update Photo</button></li>
+                                                    <li class="list-group-item border-0"><input type="text" name="judul" value="<?= $gambar['judul'] ?>"></li>
+                                                    <li class="list-group-item border-0"><input type="text" name="deskripsi" value="<?= $gambar['deskripsi'] ?>"></li>
+                                                    <li class="list-group-item border-0"><button type="submit">Update Photo</button></li>
                                                 </ul>
                                             </div>
                                                 <input type="hidden" name="action" value="edit">
                                                 <h4>
                                                     <?= $gambar['idfoto'] ?>
                                                 </h4>
-                                                
-                                                
-
-                                                <!-- Tambahkan input file untuk gambar -->
-                                                
                                             </form>
                                         </div>
                                     </div>

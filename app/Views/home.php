@@ -81,10 +81,10 @@
                                             <div class="d-flex align-items-center">
                                                 <img src="<?= base_url('/img/seele.jpeg') ?>" alt="Deskripsi gambar"
                                                     width="40" height="40" class="me-3  rounded-circle">
-                                                <a href="<?= base_url('like/' . $gambar['idfoto']) ?>"
-                                                    class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" width="40"
-                                                        height="40" stroke="currentColor" class="w-6 h-6">
+                                                <a href="<?= base_url('like/' . $gambar['idfoto']) ?>" class="btn "><svg
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        stroke-width="1.5" width="40" height="40" stroke="currentColor"
+                                                        class="w-6 h-6 ">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                                                     </svg></a>
@@ -108,6 +108,9 @@
                                                     <p>
                                                         <?= $gambar['deskripsi'] ?>
                                                     </p>
+                                                    <p>
+                                                        <?= $gambar['iduser'] ?>
+                                                    </p>
                                                 </li>
                                                 <li class="list-group-item border-0"></li>
                                             </ul>
@@ -124,11 +127,12 @@
                                                 <?php endif; endforeach; ?>
                                             <hr>
                                             <form action="/home/<?= $gambar['idfoto'] ?>" method="post">
-                                                <div class="input-group mb-3 ">
+                                                <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="deskripsi"
                                                         placeholder="Tambahkan komentar..."
                                                         aria-label="Tambahkan komentar..." aria-describedby="basic-addon2">
-                                                    <input type="hidden" name="fotoid">
+                                                    <!-- Tambahkan input hidden untuk menyimpan fotoid -->
+                                                    <input type="hidden" name="fotoid" value="<?= $gambar['idfoto'] ?>">
                                                     <button type="submit" class="input-group-text" id="basic-addon2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -139,6 +143,7 @@
                                                     </button>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>

@@ -19,6 +19,18 @@ class User extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'avatar' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'namalengkap' => [
+                'type' => 'VARCHAR',
+                'constraint' => 30,
+            ],
+            'alamat'=> [
+                'type' => 'TEXT',
+                'constraint' => 255,
+            ],
             'email' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

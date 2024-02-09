@@ -17,12 +17,14 @@ $routes->get('/login', 'AuthController::login');
 $routes->post('/login', 'AuthController::valid_login');
 $routes->get('/logout', 'AuthController::logout');
 
+$routes->post('/editProfile', 'Home::editProfile');
 $routes->get('/kelolaprofile', 'Home::kelolaprofile');
+
 $routes->get('/kelolafoto', 'FotoController::kelolafoto');
 $routes->post('delete/(:num)', 'FotoController::delete/$1');
 $routes->post('edit/(:num)', 'FotoController::edit/$1');
 $routes->post('update/(:any)', 'FotoController::update/$1'); // Tambahkan rute untuk menangani update foto
-$routes->get('like/(:num)', 'FotoController::like/$1');
+$routes->get('like/(:any)', 'FotoController::like/$1');
 
 $routes->get('/uploadForm', 'FotoController::uploadForm');
 $routes->post('/uploadForm', 'FotoController::upload');
