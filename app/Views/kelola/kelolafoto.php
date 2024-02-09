@@ -78,6 +78,15 @@
 
                                     <div class="row mb-3">
                                         <div class="col d-flex justify-content-between">
+                                        <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>" method="post" enctype="multipart/form-data">                                                enctype="multipart/form-data">
+                                                <input type="hidden" name="action" value="edit">
+                                                <input type="hidden" name="idfoto" value="<?= $gambar['idfoto'] ?>">
+                                                <input type="text" name="judul" value="<?= $gambar['judul'] ?>">
+                                                <input type="text" name="deskripsi" value="<?= $gambar['deskripsi'] ?>">
+                                                <button type="submit">Update Photo</button>
+                                            </form>
+
+
                                             <form action="<?= base_url('delete/' . $gambar['idfoto']) ?>" method="post"
                                                 onsubmit="return confirm('Are you sure you want to delete this photo?');">
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

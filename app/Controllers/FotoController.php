@@ -77,10 +77,59 @@ class FotoController extends BaseController
 
         return view('home', $data);
     }
+
     public function delete($idfoto)
     {
         $this->fotoModel->delete($idfoto);
         return redirect()->to('/kelolafoto');
     }
-    
+
+    public function edit($idfoto)
+    {
+        // Ambil data dari permintaan POST
+        $judul = $this->request->getPost('judul');
+        $deskripsi = $this->request->getPost('deskripsi');
+
+        // Validasi data jika diperlukan
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'judul' => 'required',
+            // tambahkan aturan validasi lainnya sesuai kebutuhan
+        ]);
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->to('/kelolafoto')->withInput()->with('validation', $validation);
+        }
+
+        // Periksa apakah ada file gambar yang diunggah
+        $lokasifoto = $this->request->getFile('lokasifoto');
+        if ($lokasifoto !== null) {
+            if ($lokasifoto->isValid() && !$lokasifoto->hasMoved()) {
+                // Handle file upload
+                $lokasifotoName = $lokasifoto->getRandomName();
+                $lokasifoto->move(ROOTPATH . 'public/uploads/', $lokasifotoName);
+            } else {
+                // File tidak valid, lakukan penanganan error di sini jika diperlukan
+                return redirect()->to('/kelolafoto')->with('error', 'Invalid file uploaded.');
+            }
+        } else {
+            // File tidak diunggah, lakukan penanganan error di sini jika diperlukan
+            return redirect()->to('/kelolafoto')->with('error', 'No file uploaded.');
+        }
+
+        // Perbarui data foto dalam database
+        $fotoModel = new \App\Models\FotoModel();
+        $data = [
+            'judul' => $judul,
+            'deskripsi' => $deskripsi,
+            'lokasifoto' => $lokasifotoName // Gunakan nama file yang baru jika diunggah
+            // tambahkan kolom lain yang ingin diperbarui
+        ];
+
+        $fotoModel->update($idfoto, $data);
+
+        // Redirect kembali ke halaman kelolafoto setelah pengeditan
+        return redirect()->to('/kelolafoto')->with('success', 'Photo updated successfully.');
+    }
+
+
 }
