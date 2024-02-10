@@ -13,8 +13,6 @@ class Home extends BaseController
     public function __construct()
     {
         $this->fotoModel = new \App\Models\FotoModel();
-
-        // Meload session
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
     }
     public function index(): string
@@ -57,6 +55,7 @@ class Home extends BaseController
             'username' => $this->request->getPost('username'),
             'email' => $this->request->getPost('email'),
             'alamat' => $this->request->getPost('alamat'),
+            'avatar' => $this->request->getPost('avatar'),
             'namalengkap' => $this->request->getPost('namalengkap')
         ];
 
@@ -68,7 +67,7 @@ class Home extends BaseController
             $avatar->move(ROOTPATH . 'public/uploads/', $newAvatarName);
 
             // Simpan lokasi gambar profil baru ke dalam data
-            $data['avatar'] = 'uploads' . $newAvatarName;
+            $data['avatar'] = 'uploads/' . $newAvatarName; // Perbaikan path gambar
         }
 
         // Simpan perubahan ke dalam database
@@ -79,8 +78,4 @@ class Home extends BaseController
         // Redirect kembali ke halaman profil setelah update
         return redirect()->to('/kelolaprofile')->with('success', 'Profile updated successfully.');
     }
-
-
-
-
 }

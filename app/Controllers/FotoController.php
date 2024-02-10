@@ -12,7 +12,8 @@ class FotoController extends BaseController
     public function __construct()
     {
         $this->fotoModel = new \App\Models\FotoModel();
-        // Meload session
+        
+
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
         $this->validation = \Config\Services::validation(); // Load the validation library
     }

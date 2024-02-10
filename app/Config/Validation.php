@@ -34,7 +34,7 @@ class Validation extends BaseConfig
      * @var array<string, string>
      */
     public array $templates = [
-        'list'   => 'CodeIgniter\Validation\Views\list',
+        'list' => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
 
@@ -42,7 +42,7 @@ class Validation extends BaseConfig
         'email' => 'required|valid_email',
         'password' => 'required|min_length[6]',
     ];
-    
+
     // public $rules = [
     //     'judul' => 'required|min_length[3]|max_length[255]',
     //     'lokasifile' => 'uploaded[lokasifile]|max_size[lokasifile,1024]|mime_in[lokasifile,image/jpg,image/jpeg,image/png]',
@@ -80,8 +80,8 @@ class Validation extends BaseConfig
     //     'confirm' => [
     //         'matches' => 'Konfirmasi password harus sesuai dengan password',
     //     ]
-        
-        
+
+
     // ];
     // --------------------------------------------------------------------
     // Rules

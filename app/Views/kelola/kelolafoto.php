@@ -84,7 +84,6 @@
 
                                     <div class="row mb-3">
                                         <div class="col d-flex justify-content-between">
-                                            
                                             <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>" method="post"
                                                 enctype="multipart/form-data" class="mt-4">
                                                 <div class="card border-0" style="width: 23rem;">

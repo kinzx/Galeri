@@ -41,36 +41,72 @@
             </div>
         </div>
     </nav>
+
     <div class="container rounded bg-white mt-5 mb-5">
         <form action="<?= base_url('editProfile') ?>" method="post" enctype="multipart/form-data">
-            <!-- Input untuk username -->
-            <label>Username</label>
-            <input type="text" name="username" value="<?= $userData['username'] ?>" required>
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <label>Avatar</label>
+                        <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px">
+                            <input type="file" class="form-control" id="image" name="avatar" accept="image/*" />
+                            <div class="img-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Settings</h4>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Username</label>
+                                <input class="form-control" type="text" name="username"
+                                    value="<?= $userData['username'] ?>">
+                            </div>
 
-            <!-- Input untuk email -->
-            <label>Email</label>
-            <input type="email" name="email" value="<?= $userData['email'] ?>" required>
+                            <div class="col-md-12"><label class="labels">Email</label>
+                                <input class="form-control" type="email" name="email" value="<?= $userData['email'] ?>">
+                            </div>
 
-            <!-- Input untuk alamat -->
-            <label>Alamat</label>
-            <input type="text" name="alamat" value="<?= $userData['alamat'] ?>">
+                            <div class="col-md-12"><label class="labels">Nama lengkap</label>
+                                <input class="form-control" type="text" name="namalengkap"
+                                    value="<?= $userData['namalengkap'] ?>">
+                            </div>
 
-            <!-- Input untuk nama lengkap -->
-            <label>Nama Lengkap</label>
-            <input type="text" name="namalengkap" value="<?= $userData['namalengkap'] ?>">
+                            <div class="col-md-12"><label class="labels">Alamat</label>
+                                <input class="form-control" type="text" name="alamat"
+                                    value="<?= $userData['alamat'] ?>">
+                            </div>
 
-            <!-- Input untuk mengunggah avatar baru -->
-            <label>Avatar</label>
-            <input type="file" name="avatar">
-
-            <!-- Tombol untuk menyimpan perubahan -->
-            <button type="submit">Simpan Perubahan</button>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="submit">Save
+                                    Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
-    </div>
     </div>
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/custom.js') ?>"></script>
+    <script>
+        function previewIMG(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.img-preview').html('<img style="width: 100%" src="' + e.target.result + '" />');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#image').change(function () {
+            previewIMG(this);
+        });
+    </script>
 </body>
 
 </html>
