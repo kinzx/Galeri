@@ -15,7 +15,7 @@ class Likefoto extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'fotoid'       => [
+            'idfoto'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => 225,
             ],

@@ -24,7 +24,7 @@
                   <!-- Menampilkan pesan kesalahan -->
                   <?php if (session()->has('error')): ?>
                     <div class="alert alert-danger" role="alert">
-                      <?= print_r(session('error')) ?>
+                      <?= session('error') ?>
                     </div>
                   <?php endif; ?>
                   <div class="form-outline form-black mb-4">

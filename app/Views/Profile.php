@@ -35,36 +35,59 @@
                         <a class="nav-link" href="<?= base_url('/kelolafoto') ?>">Kelola foto</a>
                     </li>
                 </ul>
-                <form class="d-flex" style="flex: 1;">
+                <form class="d-flex mb-1" style="flex: 1;">
                     <!-- Menggunakan flex untuk mengisi ruang tersisa -->
                     <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
                         placeholder="Search" aria-label="Search" />
                 </form>
-                <a href="/profile"><img src="<?= base_url($userData['avatar']) ?>" class="rounded-circle" width="45"
-                        height="45" /></a>
-                <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
+                <a style="border-radius: 100px;" onclick="return confirm('Apakah Anda yakin ingin logout?')" class="btn btn-danger " href="<?= base_url('/logout') ?>">Logout</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <div class="" style="text-align: center;">
-            <img src="<?= base_url($userData['avatar']) ?>" alt="Profile Image" width="90px" height="90px"
-                class="rounded-circle">
-            <h4>Kinar Aurasae</h4>
+            <a href="/profile">
+                <?php if ($userData['avatar']): ?>
+                    <img src=" <?= base_url($userData['avatar']) ?>" alt="Avatar" class="rounded-circle  " width="100px"
+                        height="100px">
+                <?php else: ?>
+                    <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
+                                                    stroke-width=" 1.5" width="100px" height="100px" stroke="currentColor"
+                        style="color: black;" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+
+                <?php endif; ?>
+            </a>
+            <h4>
+                <?= ($userData['username']) ?>
+            </h4>
             <a href="<?= base_url('/kelolaprofile') ?>">
                 <button class="btn btn-dark mb-2" style="border-radius: 50px;">Kelola Akun</button>
             </a>
         </div>
     </div>
 
-    <div class="container">
 
-        <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Album</h1>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h1 class="fw-light text-center text-lg-start mt-4 mb-0 ">Album</h1>
+            <div class="d-flex align-items-end">
+                <a class="btn btn-outline-dark" href="">Tambah album</a>
+            </div>
+        </div>
+
 
 
         <hr class="mt-2 mb-5">
-
+        <?php if (session()->has('success')): ?>
+            <div class="alert alert-success" role="alert">
+                <?= session('success') ?>
+            </div>
+        <?php endif; ?>
         <div class="row text-center text-lg-start">
 
             <div class="col-lg-3 col-md-4 col-6">
@@ -80,28 +103,6 @@
         </div>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                </div>
-                <div class="modal-body">
-                    <img src="<?= base_url('') ?>" alt="">
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-
-    </footer>
 
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>

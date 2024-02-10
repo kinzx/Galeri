@@ -37,7 +37,7 @@ class FotoController extends BaseController
         } else {
             // Handle jika ID pengguna tidak tersedia
             // Misalnya, redirect pengguna ke halaman login
-            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman ini');
+            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman upload gambar');
         }
     }
 
@@ -49,9 +49,7 @@ class FotoController extends BaseController
                 'judul' => 'required'
             ])
         ) {
-            $validation = \Config\Services::validation();
-            // dd($validation);
-            return redirect()->to('/uploadForm')->withInput()->with('validation', $validation);
+            return redirect()->to('/uploadForm')->withInput()->with('error', 'Photo uploaded failed.');
         }
 
         // Handle file upload
@@ -81,6 +79,11 @@ class FotoController extends BaseController
 
     public function home()
     {
+        if (!session()->has('iduser')) {
+            // Jika belum login, atur pesan flash dan redirect ke halaman login
+            session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman.');
+            return redirect()->to('/login');
+        }
         session();
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
@@ -137,6 +140,7 @@ class FotoController extends BaseController
             // Misalnya, redirect pengguna ke halaman login
             return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman ini');
         }
+        return view('kelola/kelolafoto', $data);
     }
 
 

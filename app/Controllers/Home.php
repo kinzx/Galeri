@@ -29,13 +29,34 @@ class Home extends BaseController
         return view('tes');
     }
 
-    public function profile(): string
+    public function profile()
     {
-        return view('profile');
+        //cara agar user tidak bisa menuju kemana mana
+        if (!session()->has('iduser')) {
+            // Jika belum login, atur pesan flash dan redirect ke halaman login
+            session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman profile.');
+            return redirect()->to('/login');
+        }
+
+        $iduser = session()->get('iduser');
+        $userModel = new \App\Models\UserModel();
+        $userData = $userModel->find($iduser);
+
+        // Kirim data ke view
+        $data['userData'] = $userData;
+        return view('profile', $data);
     }
 
-    public function kelolaprofile(): string
+
+    public function kelolaprofile()
     {
+        // Periksa apakah pengguna sudah login
+        if (!session()->has('iduser')) {
+            // Jika belum login, atur pesan flash dan redirect ke halaman login
+            session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman kelola profile.');
+            return redirect()->to('/login');
+        }
+
         // Ambil data pengguna dari database
         $iduser = session()->get('iduser');
         $userModel = new \App\Models\UserModel();
@@ -76,6 +97,6 @@ class Home extends BaseController
         $userModel->update($iduser, $data);
 
         // Redirect kembali ke halaman profil setelah update
-        return redirect()->to('/kelolaprofile')->with('success', 'Profile updated successfully.');
+        return redirect()->to('/profile')->with('success', 'Profile updated successfully.');
     }
 }

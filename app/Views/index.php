@@ -46,7 +46,7 @@
     </div>
     <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-dark m-3" href="https://www.instagram.com/erpeel.png/"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

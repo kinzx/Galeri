@@ -35,9 +35,21 @@
                     <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
                         placeholder="Search" aria-label="Search" />
                 </form>
-                <a href="/profile"><img src=" <?= base_url($userData['avatar']) ?>" class="rounded-circle" width="45"
-                        height="45" /></a>
-                <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
+                <a href="/profile">
+                    <?php if ($userData['avatar']): ?>
+                        <img src=" <?= base_url($userData['avatar']) ?>" alt="Avatar" class="rounded-circle  " width="45px"
+                            height="45px">
+                    <?php else: ?>
+                        <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
+                                    stroke-width=" 1.5" width="45" height="45" stroke="currentColor" style="color: black;"
+                            class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+
+                    <?php endif; ?>
+                </a>
             </div>
         </div>
     </nav>
@@ -47,7 +59,7 @@
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column  align-items-center text-center p-3 py-5">
-                        <label class="mb-3   ">Avatar</label>
+                        <label class="mb-3   ">Profile</label>
                         <!-- Tampilkan avatar -->
                         <?php if ($userData['avatar']): ?>
                             <img src=" <?= base_url($userData['avatar']) ?>" alt="Avatar" class="rounded-circle  "
@@ -69,7 +81,7 @@
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Username</label>
+                            <div class="col-md-12"><label class="labels">Profile</label>
                                 <input type="file" class="form-control" id="image" name="avatar" />
                             </div>
                             <div class="col-md-12"><label class="labels">Username</label>
@@ -91,11 +103,14 @@
                                     value="<?= $userData['alamat'] ?>">
                             </div>
 
-                            <div class="mt-5 text-center">
-                                <button class="btn btn-primary profile-button" type="submit">Save
+                            <div class="mt-5 ">
+                                <a class="btn btn-outline-secondary" href="profile/">
+                                    kembali
+                                </a>
+                                <button class="btn btn-outline-success" type="submit">Save
                                     Profile
                                 </button>
-                                <a href="profile/">kembali</a>
+                                
                             </div>
                         </div>
                     </div>
