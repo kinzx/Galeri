@@ -40,7 +40,7 @@
                         </form>
                     </li>
                 </ul>
-                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
+                <a href="/profile"><img src="<?= base_url($userData['avatar']) ?>" class="rounded-circle" width="45"
                         height="45" /></a>
                 <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
             </div>
@@ -75,8 +75,7 @@
                                             <div class="form-outline mb-4">
                                                 <label for="deskripsi" class="form-label">Description:</label>
                                                 <input type="text" class="form-control" id="deskripsi" name="deskripsi"
-                                                <?= old('deskripsi') ?>
-                                                />
+                                                    <?= old('deskripsi') ?> />
                                             </div>
 
                                             <div class="text-center">

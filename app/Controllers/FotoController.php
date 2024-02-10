@@ -12,7 +12,8 @@ class FotoController extends BaseController
     public function __construct()
     {
         $this->fotoModel = new \App\Models\FotoModel();
-        
+        $this->userModel = new \App\Models\UserModel();
+
 
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
         $this->validation = \Config\Services::validation(); // Load the validation library
@@ -20,17 +21,29 @@ class FotoController extends BaseController
 
     public function uploadForm()
     {
-        session(); //Memulai sesi jika belum memulainya
-        helper(['form']); // Tambahkan baris ini untuk memuat helper formulir
-        $data = [
-            'title' => "Upload Foto",
-            'validation' => \Config\Services::Validation()
-        ];
-        return view('upload_form', $data);
+        // Ambil ID pengguna dari sesi
+        $iduser = session()->get('iduser');
+
+        // Pastikan ID pengguna tersedia sebelum mencari data pengguna
+        if ($iduser) {
+            $userModel = new \App\Models\UserModel();
+            $userData = $userModel->find($iduser);
+
+            // Kirim data ke view
+            $data['userData'] = $userData;
+            session(); //Memulai sesi jika belum memulainya
+
+            return view('upload_form', $data);
+        } else {
+            // Handle jika ID pengguna tidak tersedia
+            // Misalnya, redirect pengguna ke halaman login
+            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman ini');
+        }
     }
 
     public function upload()
     {
+
         if (
             !$this->validate([
                 'judul' => 'required'
@@ -71,24 +84,61 @@ class FotoController extends BaseController
         session();
         $komentarModel = new \App\Models\KomentarfotoModel();
         $data['gambarDariDatabase'] = $this->fotoModel->findAll();
+        $iduser = session()->get('iduser');
+        $userModel = new \App\Models\UserModel();
+        $userData = $userModel->find($iduser);
+
+        // Kirim data ke view
+        $data['userData'] = $userData;
         $data['komentar'] = $komentarModel->findAll();
         return view('home', $data);
 
     }
 
+    // public function kelolafoto()
+    // {
+    //     $userModel = new \App\Models\UserModel();
+    //     $userData = $userModel->find($iduser);
+
+    //     // Kirim data ke view
+    //     $data['userData'] = $userData;
+    //     $iduser = $this->session->get('iduser');
+    //     $data['gambarDariDatabase'] = $this->fotoModel->where('iduser', $iduser)->findAll();
+
+    //     // Check if the request is for editing a photo
+    //     if ($this->request->getMethod() === 'post' && $this->request->getPost('action') === 'edit') {
+    //         // Process the edit request
+    //         return $this->editPhoto($data);
+    //     }
+
+    //     return view('kelola/kelolafoto', $data);
+    // }
+
     public function kelolafoto()
     {
+        // Ambil ID pengguna dari sesi
         $iduser = $this->session->get('iduser');
-        $data['gambarDariDatabase'] = $this->fotoModel->where('iduser', $iduser)->findAll();
 
-        // Check if the request is for editing a photo
-        if ($this->request->getMethod() === 'post' && $this->request->getPost('action') === 'edit') {
-            // Process the edit request
-            return $this->editPhoto($data);
+        // Pastikan ID pengguna tersedia sebelum mencari data pengguna
+        if ($iduser) {
+            $userModel = new \App\Models\UserModel();
+            $userData = $userModel->find($iduser);
+
+            // Kirim data pengguna ke view
+            $data['userData'] = $userData;
+
+            // Ambil gambar dari database berdasarkan ID pengguna
+            $data['gambarDariDatabase'] = $this->fotoModel->where('iduser', $iduser)->findAll();
+
+            // Kirim data ke view
+            return view('kelola/kelolafoto', $data);
+        } else {
+            // Handle jika ID pengguna tidak tersedia
+            // Misalnya, redirect pengguna ke halaman login
+            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman ini');
         }
-        
-        return view('kelola/kelolafoto', $data);
     }
+
 
     public function delete($idfoto)
     {

@@ -40,7 +40,7 @@
                     <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
                         placeholder="Search" aria-label="Search" />
                 </form>
-                <a href="/profile"><img src="<?= base_url('img/seele.jpeg') ?>" class="rounded-circle" width="45"
+                <a href="/profile"><img src="<?= base_url($userData['avatar']) ?>" class="rounded-circle" width="45"
                         height="45" /></a>
                 <a class="nav-link" href="<?= base_url('/logout') ?>">Logout</a>
             </div>
@@ -49,7 +49,7 @@
 
     <div class="container">
         <div class="" style="text-align: center;">
-            <img src="<?= base_url('img/seele.jpeg') ?>" alt="Profile Image" width="90px" height="90px"
+            <img src="<?= base_url($userData['avatar']) ?>" alt="Profile Image" width="90px" height="90px"
                 class="rounded-circle">
             <h4>Kinar Aurasae</h4>
             <a href="<?= base_url('/kelolaprofile') ?>">
