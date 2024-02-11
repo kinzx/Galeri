@@ -28,19 +28,19 @@ class LikefotoModel extends Model
   }
 
   public function isLiked($iduser, $idfoto)
-  {
+{
     // Lakukan query ke database untuk memeriksa apakah pengguna sudah melakukan "like" pada foto ini
     $result = $this->where('iduser', $iduser)
-      ->where('idfoto', $idfoto)
-      ->first();
+                   ->where('idfoto', $idfoto)
+                   ->first();
 
     // Jika hasil query ditemukan, berarti pengguna sudah melakukan "like" pada foto ini
     if ($result) {
-      return true;
+        return true;
     } else {
-      return false;
+        return false;
     }
-  }
+}
 
 
   // Dates

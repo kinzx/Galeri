@@ -40,7 +40,8 @@
                     <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
                         placeholder="Search" aria-label="Search" />
                 </form>
-                <a style="border-radius: 100px;" onclick="return confirm('Apakah Anda yakin ingin logout?')" class="btn btn-danger " href="<?= base_url('/logout') ?>">Logout</a>
+                <a style="border-radius: 100px;" onclick="return confirm('Apakah Anda yakin ingin logout?')"
+                    class="btn btn-danger " href="<?= base_url('/logout') ?>">Logout</a>
             </div>
         </div>
     </nav>
@@ -54,8 +55,8 @@
                 <?php else: ?>
                     <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
-                                                    stroke-width=" 1.5" width="100px" height="100px" stroke="currentColor"
-                        style="color: black;" class="w-6 h-6">
+                                                        stroke-width=" 1.5" width="100px" height="100px"
+                        stroke="currentColor" style="color: black;" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
@@ -76,7 +77,12 @@
         <div class="d-flex justify-content-between">
             <h1 class="fw-light text-center text-lg-start mt-4 mb-0 ">Album</h1>
             <div class="d-flex align-items-end">
-                <a class="btn btn-outline-dark" href="">Tambah album</a>
+                <a class="btn btn-outline-dark d-flex align-items-center" href=""> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" width="20px" height="20px" class="w-5 h-5">
+                        <path
+                            d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                    </svg>
+                    Album</a>
             </div>
         </div>
 
