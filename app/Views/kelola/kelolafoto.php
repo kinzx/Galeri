@@ -84,31 +84,36 @@
 
                                     <div class="row mb-3">
                                         <div class="col d-flex justify-content-between">
-                                            <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>" method="post"
-                                                enctype="multipart/form-data" class="mt-4">
-                                                <div class="card border-0" style="width: 23rem;">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item border-0"><input type="text" name="judul"
-                                                                value="<?= $gambar['judul'] ?>"></li>
-                                                        <li class="list-group-item border-0"><input type="text"
-                                                                name="deskripsi" value="<?= $gambar['deskripsi'] ?>"></li>
-                                                        <li class="list-group-item border-0"><button type="submit">Update
-                                                                Photo</button></li>
-                                                    </ul>
-                                                </div>
-                                                <input type="hidden" name="action" value="edit">
-                                                <h4>
-                                                    <?= $gambar['idfoto'] ?>
-                                                </h4>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <form action="<?= base_url('delete/' . $gambar['idfoto']) ?>" method="post"
-                                                onsubmit="return confirm('Are you sure you want to delete this photo?');">
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                            </form>
+
+                                            <div class="card border-0" style="width: 23rem;">
+                                                <ul class="list-group list-group-flush">
+                                                    <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>"
+                                                        method="post" enctype="multipart/form-data" class="mt-4">
+                                                        <li class="list-group-item border-0">
+                                                            <label for="">Judul</label>
+                                                            <input class="form-control" type="text" name="judul"
+                                                                value="<?= $gambar['judul'] ?>">
+                                                        </li>
+                                                        <li class="list-group-item border-0">
+                                                            <label for="">Deskripsi</label>
+                                                            <input type="text" class="form-control" name="deskripsi"
+                                                                value="<?= $gambar['deskripsi'] ?>">
+                                                        </li>
+                                                        <li class="list-group-item border-0">
+                                                            <button class="btn btn-success" type="submit">Edit</button>
+
+                                                        </li>
+                                                    </form>
+                                                    <li class="list-group-item border-0">
+                                                        <form action="<?= base_url('delete/' . $gambar['idfoto']) ?>"
+                                                            method="post"
+                                                            onsubmit="return confirm('Are you sure you want to delete this photo?');">
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-sm">Hapus</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

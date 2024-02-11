@@ -12,8 +12,27 @@ class LikefotoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['fotoid', 'userid', 'tanggallike'];
-
+    protected $allowedFields    = ['idfoto', 'iduser', 'tanggallike'];
+    public function like($iduser, $photoId)
+    {
+      $data = [
+        'idfoto' => $idfoto,
+        'iduser' => $iduser,
+        'tanggallike' => date('Y-m-d'),
+      ];
+  
+      $this->insert($data);
+    }
+  
+    public function unlike($iduser, $idfoto)
+    {
+      $this->where('iduser', $iduser)->where('idfoto', $idfoto)->delete();
+    }
+  
+    public function isLiked($iduser, $photoId)
+    {
+      return $this->where('iduser', $iduser)->where('idfoto', $idfoto)->countAllResults() > 0;
+    }
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

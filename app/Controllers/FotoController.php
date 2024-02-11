@@ -13,11 +13,16 @@ class FotoController extends BaseController
     {
         $this->fotoModel = new \App\Models\FotoModel();
         $this->userModel = new \App\Models\UserModel();
+        // $this->likefotoModel = new \App\Models\LikefotoModel();
+        $this->likeModel = new \App\Models\LikefotoModel();
 
 
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
         $this->validation = \Config\Services::validation(); // Load the validation library
     }
+
+
+
 
     public function uploadForm()
     {
@@ -77,6 +82,22 @@ class FotoController extends BaseController
         return redirect()->to('/uploadForm')->with('success', 'Photo uploaded successfully.');
     }
 
+
+    public function like()
+    {
+        // Ambil ID foto yang dilakukan "Like" dari permintaan POST
+        $idfoto = $this->request->getPost('idfoto');
+
+        // Panggil metode "like" dari model LikefotoModel untuk menambahkan "Like" ke dalam database
+        $this->likeModel->like($idfoto);
+
+        // Redirect kembali ke halaman home
+        return redirect()->to('/home');
+    }
+
+
+
+
     public function home()
     {
         if (!session()->has('iduser')) {
@@ -86,12 +107,20 @@ class FotoController extends BaseController
         }
         session();
         $komentarModel = new \App\Models\KomentarfotoModel();
-        $data['gambarDariDatabase'] = $this->fotoModel->findAll();
+
+        // $idfoto = isset($_POST['idfoto']) ? $_POST['idfoto'] : null;
+
+        // $isLiked = $this->checkLikeStatus($idfoto);
+
         $iduser = session()->get('iduser');
         $userModel = new \App\Models\UserModel();
         $userData = $userModel->find($iduser);
-
+        $komentarModel = new \App\Models\KomentarfotoModel();
+        $iduser = session()->get('iduser');
+        $userData = $this->userModel->find($iduser);
         // Kirim data ke view
+        $data['gambarDariDatabase'] = $this->fotoModel->findAll();
+        // $data['isLiked'] = $isLiked;
         $data['userData'] = $userData;
         $data['komentar'] = $komentarModel->findAll();
         return view('home', $data);

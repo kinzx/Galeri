@@ -21,18 +21,27 @@ class KomentarController extends BaseController
     public function tambahkomentar($fotoid)
     {
         // Mendapatkan data dari POST request
-        $data = $this->request->getPost();
         $iduser = session()->get('iduser');
         // Mendapatkan ID pengguna dari sesi
         $iduser = $this->session->get('iduser');
 
+        $deskripsi = $this->request->getPost('deskripsi');
+
         // Menyimpan komentar beserta iduser ke dalam database
-        $this->KomentarfotoModel->insert([
-            'fotoid' => $fotoid,
-            'deskripsi' => $data['deskripsi'],
-            'tanggalunggahan' => date('Y-m-d H:i:s'),
-            'iduser' => $iduser,
-        ]);
+        if (!empty($deskripsi)) {
+            // Menyimpan komentar beserta iduser ke dalam database
+            $this->KomentarfotoModel->insert([
+                'fotoid' => $fotoid,
+                'deskripsi' => $deskripsi,
+                'tanggalunggahan' => date('Y-m-d H:i:s'),
+                'iduser' => $iduser,
+            ]);
+        } else {
+            session()->setFlashdata('error', 'Deskripsi komentar tidak boleh kosong.');
+
+            // Handle kasus di mana deskripsi kosong
+            // Misalnya, atur pesan kesalahan dan kembalikan pengguna ke halaman sebelumnya
+        }
 
         // Redirect kembali ke halaman home setelah komentar ditambahkan
         return redirect()->to('/home');
