@@ -85,8 +85,7 @@ class FotoController extends BaseController
 
     public function like()
     {
-        // Ambil ID foto yang dilakukan "Like" dari permintaan POST
-        $idfoto = $this->request->getPost('idfoto');
+        $idfoto = $this->request->getPost('idfoto'); // Ambil ID foto dari permintaan POST
 
         // Panggil metode "like" dari model LikefotoModel untuk menambahkan "Like" ke dalam database
         $this->likeModel->like($idfoto);
