@@ -27,12 +27,21 @@ class LikefotoModel extends Model
     $this->insert($data);
   }
 
-  public function isLiked($idfoto)
+  public function isLiked($iduser, $idfoto)
   {
-    $iduser = session()->get('iduser'); // Ambil ID pengguna dari sesi
+    // Lakukan query ke database untuk memeriksa apakah pengguna sudah melakukan "like" pada foto ini
+    $result = $this->where('iduser', $iduser)
+      ->where('idfoto', $idfoto)
+      ->first();
 
-    return $this->where('iduser', $iduser)->where('idfoto', $idfoto)->countAllResults() > 0;
+    // Jika hasil query ditemukan, berarti pengguna sudah melakukan "like" pada foto ini
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
 
   // Dates
   protected $useTimestamps = false;

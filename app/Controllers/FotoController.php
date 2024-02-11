@@ -85,15 +85,21 @@ class FotoController extends BaseController
 
     public function like()
     {
-        $idfoto = $this->request->getPost('idfoto'); // Ambil ID foto dari permintaan POST
+        // Ambil ID foto dan ID pengguna dari permintaan POST
+        $idfoto = $this->request->getPost('idfoto');
+        $iduser = session()->get('iduser');
 
-        // Panggil metode "like" dari model LikefotoModel untuk menambahkan "Like" ke dalam database
-        $this->likeModel->like($idfoto);
+        // Periksa apakah pengguna sudah melakukan "like" pada foto ini
+        $isLiked = $this->likeModel->isLiked($iduser, $idfoto);
+
+        // Jika pengguna belum melakukan "like", tambahkan "like" ke dalam database
+        if (!$isLiked) {
+            $this->likeModel->like($iduser, $idfoto);
+        }
 
         // Redirect kembali ke halaman home
         return redirect()->to('/home');
     }
-
 
 
 
@@ -104,27 +110,38 @@ class FotoController extends BaseController
             session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman.');
             return redirect()->to('/login');
         }
-        session();
-        $komentarModel = new \App\Models\KomentarfotoModel();
 
-        // $idfoto = isset($_POST['idfoto']) ? $_POST['idfoto'] : null;
-
-        // $isLiked = $this->checkLikeStatus($idfoto);
-
-        $iduser = session()->get('iduser');
-        $userModel = new \App\Models\UserModel();
-        $userData = $userModel->find($iduser);
-        $komentarModel = new \App\Models\KomentarfotoModel();
         $iduser = session()->get('iduser');
         $userData = $this->userModel->find($iduser);
-        // Kirim data ke view
-        $data['gambarDariDatabase'] = $this->fotoModel->findAll();
-        // $data['isLiked'] = $isLiked;
-        $data['userData'] = $userData;
-        $data['komentar'] = $komentarModel->findAll();
-        return view('home', $data);
 
+        // Mendapatkan data foto dari model
+        $gambarDariDatabase = $this->fotoModel->findAll();
+
+        // Membuat array untuk menyimpan status "like" untuk setiap foto
+        $isLikedArray = [];
+
+        // Mendapatkan status "like" untuk setiap foto
+        foreach ($gambarDariDatabase as $gambar) {
+            // Memeriksa apakah pengguna sudah melakukan "like" pada foto ini
+            $isLiked = $this->likeModel->isLiked($iduser, $gambar['idfoto']);
+            $isLikedArray[$gambar['idfoto']] = $isLiked;
+        }
+
+        // Mendapatkan data komentar dari model
+        $komentarModel = new \App\Models\KomentarfotoModel();
+        $komentar = $komentarModel->findAll();
+
+        // Mengirimkan data ke view
+        $data = [
+            'gambarDariDatabase' => $gambarDariDatabase,
+            'userData' => $userData,
+            'komentar' => $komentar,
+            'isLikedArray' => $isLikedArray // Menyimpan status "like" untuk setiap foto
+        ];
+
+        return view('home', $data);
     }
+
 
     // public function kelolafoto()
     // {

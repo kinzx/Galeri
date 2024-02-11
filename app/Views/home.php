@@ -48,8 +48,8 @@
                     <?php else: ?>
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
-                                                                        stroke-width=" 1.5" width="45" height="45"
-                            stroke="currentColor" style="color: black;" class="w-6 h-6">
+                                                                                            stroke-width=" 1.5" width="45"
+                            height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
@@ -89,32 +89,23 @@
                                 <div class="col-md-6">
 
                                     <div class="row mb-3">
+                                        <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <!-- Modal content -->
+                                        </div>
                                         <div class="col d-flex justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <img src="<?= base_url('/img/seele.jpeg') ?>" alt="Deskripsi gambar"
-                                                    width="40" height="40" class="me-3  rounded-circle">
-                                                <a href="<?= base_url('like/' . $gambar['idfoto']) ?>" class="btn "><svg
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" width="40" height="40" stroke="currentColor"
-                                                        class="w-6 h-6 ">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                                    </svg></a>
-                                                <div class="gambar-entry">
-
-                                                    <div class="gambar-entry">
-                                                        <form action="<?= base_url('home/like') ?>" method="post">
-                                                            <input type="hidden" name="idfoto"
-                                                                value="<?= $gambar['idfoto'] ?>">
-                                                            <button type="submit" class="btn btn-primary">Like</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                            <?php $isLiked = false; ?>
+                                            <a href="<?= base_url('like/' . $gambar['idfoto']) ?>" class="btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" width="40" height="40"
+                                                    stroke="<?= $isLikedArray[$gambar['idfoto']] ? 'red' : 'currentColor' ?>"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                </svg>
+                                            </a>
                                             <button type="button" class="btn btn-outline"
-                                                style="border-radius: 50px;">Simpan
-                                            </button>
+                                                style="border-radius: 50px;">Simpan</button>
                                         </div>
                                     </div>
                                     <div class="row">
