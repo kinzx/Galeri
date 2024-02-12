@@ -88,7 +88,7 @@ class Home extends BaseController
             $avatar->move(ROOTPATH . 'public/uploads/', $newAvatarName);
 
             // Simpan lokasi gambar profil baru ke dalam data
-            $data['avatar'] = 'uploads/' . $newAvatarName; // Perbaikan path gambar
+            $data['avatar'] = '/' . $newAvatarName; // Perbaikan path gambar
         }
 
         // Simpan perubahan ke dalam database

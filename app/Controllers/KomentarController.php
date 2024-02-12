@@ -33,8 +33,7 @@ class KomentarController extends BaseController
             $this->KomentarfotoModel->insert([
                 'fotoid' => $fotoid,
                 'deskripsi' => $deskripsi,
-                'tanggalunggahan' => date('Y-m-d H:i:s'),
-                'iduser' => $iduser,
+                'userid' => $iduser,
             ]);
         } else {
             session()->setFlashdata('error', 'Deskripsi komentar tidak boleh kosong.');

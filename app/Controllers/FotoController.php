@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\FotoModel;
 
 class FotoController extends BaseController
 {
@@ -83,14 +84,13 @@ class FotoController extends BaseController
     }
 
 
-    public function like()
+    public function like($idfoto)
     {
-        // Ambil ID foto dan ID pengguna dari permintaan POST
-        $idfoto = $this->request->getPost('idfoto');
         $iduser = session()->get('iduser');
 
         // Periksa apakah pengguna sudah melakukan "like" pada foto ini
         $isLiked = $this->likeModel->isLiked($iduser, $idfoto);
+
 
         // Jika pengguna belum melakukan "like", tambahkan "like" ke dalam database
         if (!$isLiked) {
@@ -115,8 +115,13 @@ class FotoController extends BaseController
         $userData = $this->userModel->find($iduser);
 
         // Mendapatkan data foto dari model
-        $gambarDariDatabase = $this->fotoModel->findAll();
+        $fotoModel = new FotoModel();
+        $gambarDariDatabase = $fotoModel->getFotoWithUser();
 
+        // echo "<pre>" ;
+        // print_r($data['gambarDariDatabase']);
+        // echo "</pre>" ;
+        // die;
         // Membuat array untuk menyimpan status "like" untuk setiap foto
         $isLikedArray = [];
 
@@ -183,7 +188,7 @@ class FotoController extends BaseController
         } else {
             // Handle jika ID pengguna tidak tersedia
             // Misalnya, redirect pengguna ke halaman login
-            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman ini');
+            return redirect()->to('/login')->with('error', 'Anda harus login untuk mengakses halaman Kelola foto');
         }
         return view('kelola/kelolafoto', $data);
     }

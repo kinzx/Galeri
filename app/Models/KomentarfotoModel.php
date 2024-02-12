@@ -12,7 +12,7 @@ class KomentarfotoModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['fotoid', 'deskripsi', 'tanggalunggahan', 'lokasifoto', 'userid'];
+    protected $allowedFields = ['fotoid', 'deskripsi','userid'];
     public function getKomentarByFotoId($fotoid)
     {
         return $this->where('fotoid', $fotoid)->findAll();

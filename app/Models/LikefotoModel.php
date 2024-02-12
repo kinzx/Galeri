@@ -14,10 +14,8 @@ class LikefotoModel extends Model
   protected $protectFields = true;
   protected $allowedFields = ['idfoto', 'iduser', 'tanggallike'];
   // LikefotoModel.php
-  public function like($idfoto)
+  public function like($iduser,$idfoto)
   {
-    $iduser = session()->get('iduser'); // Ambil ID pengguna dari sesi
-
     $data = [
       'idfoto' => $idfoto,
       'iduser' => $iduser,

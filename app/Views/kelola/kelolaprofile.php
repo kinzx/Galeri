@@ -30,20 +30,16 @@
                         <a class="nav-link" href="<?= base_url('/kelolafoto') ?>">Kelola foto</a>
                     </li>
                 </ul>
-                <form class="d-flex" style="flex: 1;">
-                    <!-- Menggunakan flex untuk mengisi ruang tersisa -->
-                    <input class="form-control me-2" type="search" style="border-radius: 50px; width: 100%;"
-                        placeholder="Search" aria-label="Search" />
-                </form>
+
                 <a href="/profile">
                     <?php if ($userData['avatar']): ?>
-                        <img src=" <?= base_url($userData['avatar']) ?>" alt="Avatar" class="rounded-circle  " width="45px"
-                            height="45px">
+                        <img src=" <?= base_url('/uploads/' . $userData['avatar']) ?>" alt="Avatar" class="rounded-circle  "
+                            width="45px" height="45px">
                     <?php else: ?>
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
-                                    stroke-width=" 1.5" width="45" height="45" stroke="currentColor" style="color: black;"
-                            class="w-6 h-6">
+                                                    stroke-width=" 1.5" width="45" height="45" stroke="currentColor"
+                            style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
@@ -63,7 +59,7 @@
                         <!-- Tampilkan avatar -->
                         <?php if ($userData['avatar']): ?>
                             <img src=" <?= base_url($userData['avatar']) ?>" alt="Avatar" class="rounded-circle  "
-                                width="300px" height="300px">
+                                width="200px" height="200px">
                         <?php else: ?>
                             <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="100px"
@@ -110,7 +106,7 @@
                                 <button class="btn btn-outline-success" type="submit">Save
                                     Profile
                                 </button>
-                                
+
                             </div>
                         </div>
                     </div>
