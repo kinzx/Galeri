@@ -4,46 +4,45 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Komentarfoto extends Migration
+class Foto extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'komentarid'       => [
+            'idfoto'           => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'fotoid'           => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'unsigned'   => true,
-            ],
-            'deskripsi'        => [
+            'judul' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 225,
             ],
-            'tanggalunggahan'  => [
+            'deskripsi' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 225,
+            ],
+            'tanggalunggahan' => [
                 'type' => 'DATE',
             ],
-            'lokasifoto'       => [
-                'type' => 'VARCHAR',
+            'lokasifoto' => [
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'userid'           => [
+            'iduser' => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'   => true,
             ],
         ]);
-
-        $this->forge->addKey('komentarid', true);
-        $this->forge->createTable('komentarfoto');
+        $this->forge->addKey('idfoto', true); // Ganti 'fotoid' menjadi 'idfoto'
+        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+        $this->forge->createTable('foto');
     }
 
     public function down()
     {
-        $this->forge->dropTable('komentarfoto');
+        $this->forge->dropTable('foto');
     }
 }
