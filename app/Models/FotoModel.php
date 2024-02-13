@@ -45,7 +45,7 @@ class FotoModel extends Model
     public function getFotoWithUser()
     {
         return $this->db->table('foto')
-            ->select('foto.*, user.avatar') // Ganti 'nama_kolom_avatar' dengan nama yang benar
+            ->select('foto.*, user.avatar')
             ->join('user', 'user.iduser = foto.iduser')
             ->get()
             ->getResultArray();

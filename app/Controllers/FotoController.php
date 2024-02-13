@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\FotoModel;
+use App\Models\KomentarfotoModel;
 
 class FotoController extends BaseController
 {
@@ -115,14 +116,15 @@ class FotoController extends BaseController
         $userData = $this->userModel->find($iduser);
 
         // Mendapatkan data foto dari model
+        $komentarModel = new KomentarfotoModel();
         $fotoModel = new FotoModel();
         $gambarDariDatabase = $fotoModel->getFotoWithUser();
+        $komentar = $komentarModel->getKomentarWithAvatar();
 
         // echo "<pre>" ;
         // print_r($data['gambarDariDatabase']);
         // echo "</pre>" ;
         // die;
-        // Membuat array untuk menyimpan status "like" untuk setiap foto
         $isLikedArray = [];
 
         // Mendapatkan status "like" untuk setiap foto

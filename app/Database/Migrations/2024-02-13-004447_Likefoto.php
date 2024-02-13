@@ -9,30 +9,31 @@ class Likefoto extends Migration
     public function up()
     {
         $this->forge->addField([
-            'likeid' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
+            'likeid'      => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'idfoto' => [
-                'type' => 'INT',
+            'idfoto'       => [
+                'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
+                'unsigned'   => true,
             ],
             'iduser' => [
-                'type' => 'INT',
-                'unsigned' => true,
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
             ],
-            'tanggallike' => [
+            'tanggallike'  => [
                 'type' => 'DATE',
             ],
         ]);
 
         $this->forge->addKey('likeid', true);
-
-        $this->forge->addForeignKey('iduser', 'user', 'iduser');
         $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
+        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+
         $this->forge->createTable('likefoto');
     }
 

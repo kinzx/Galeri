@@ -9,6 +9,7 @@ class Albumfoto extends Migration
     public function up()
     {
         $this->forge->addField([
+
             'albumfotoid' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -21,9 +22,9 @@ class Albumfoto extends Migration
                 'unsigned' => true,
             ],
             'iduser' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true,
+                'unsigned' => true,
             ],
             'idfoto' => [
                 'type' => 'INT',
@@ -31,10 +32,11 @@ class Albumfoto extends Migration
                 'unsigned' => true,
             ],
         ]);
-        $this->forge->addKey('albumid', true);
-        $this->forge->addForeignKey('iduser', 'user', 'idfoto'); // Merujuk ke kolom 'iduser' di tabel 'user'
+        $this->forge->addKey('albumfotoid', true);
         $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
         $this->forge->addForeignKey('albumid', 'album', 'albumid');
+        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+
         $this->forge->createTable('albumfoto');
     }
 

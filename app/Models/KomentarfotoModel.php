@@ -12,7 +12,7 @@ class KomentarfotoModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['fotoid', 'deskripsi','userid'];
+    protected $allowedFields = ['fotoid', 'deskripsi', 'userid'];
     public function getKomentarByFotoId($fotoid)
     {
         return $this->where('fotoid', $fotoid)->findAll();
@@ -41,4 +41,13 @@ class KomentarfotoModel extends Model
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
+
+    public function getKomentarWithAvatar()
+    {
+        return $this->db->table('komentarfoto')
+            ->select('komentarfoto.*, user.avatar')
+            ->join('user', 'user.iduser = komentarfoto.userid')
+            ->get()
+            ->getResultArray();
+    }
 }
