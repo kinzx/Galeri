@@ -28,7 +28,7 @@ class AlbumController extends BaseController
         ];
         
         $albumModel->insert($data);
-
+        session()->setFlashdata('success', 'Album berhasil ditambahkan.');
         return redirect()->to('/profile');
     }
 }

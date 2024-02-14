@@ -34,10 +34,10 @@ $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
 
 $routes->post('like/(:num)', 'FotoController::like/$1', ['as' => 'home.like']);
 $routes->post('unlike/(:num)', 'HomeController::unlike/$1', ['as' => 'home.unlike']);
-// app/Config/Routes.php
 
 $routes->post('/album/create', 'AlbumController::create');
 $routes->get('/album', 'Home::album');
 $routes->get('/profile', 'Home::profile');
-$routes->post('/hapus_album', 'Home::hapus_album');
+// $routes->post('hapus_album/(:num)', 'Home::hapus_album/$1');
+$routes->post('hapus_album/(:num)', 'Home::hapus_album/$1');
 

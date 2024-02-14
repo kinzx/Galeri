@@ -9,11 +9,13 @@ use App\Models\AlbumModel;
 helper(['user']);
 class Home extends BaseController
 {
+    
     protected $session; // Tambahkan properti untuk menyimpan referensi sesi
 
     public function __construct()
     {
         $this->fotoModel = new \App\Models\FotoModel();
+        $this->albumModel = new \App\Models\AlbumModel();
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
     }
     public function index(): string
@@ -45,14 +47,17 @@ class Home extends BaseController
 
         $data['userData'] = $userData;
         $data['userAlbums'] = $userAlbums;
+        
         return view('album', $data);
     }
 
     public function hapus_album($albumid)
     {
-        $this->albumModel->delete($albumid);
-        session()->setFlashdata('success', 'Photo deleted successfully.');
-        return redirect()->to('/kelolafoto');
+    // Hapus entri album itu sendiri
+    $this->albumModel->delete($albumid);
+
+    session()->setFlashdata('error', 'Album berhasil dihapus.');
+    return redirect()->to('/profile');
     }
 
     public function profile()

@@ -121,6 +121,10 @@ class FotoController extends BaseController
         $gambarDariDatabase = $fotoModel->getFotoWithUser();
         $komentar = $komentarModel->getKomentarWithAvatar();
 
+        $userModel = new \App\Models\UserModel();
+        $userData = $userModel->find($iduser);
+        $albumModel = new \App\Models\AlbumModel();
+        $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
         // echo "<pre>" ;
         // print_r($data['gambarDariDatabase']);
         // echo "</pre>" ;
@@ -140,6 +144,8 @@ class FotoController extends BaseController
 
         // Mengirimkan data ke view
         $data = [
+            'userData'=> $userData,
+            'userAlbums'=> $userAlbums,
             'gambarDariDatabase' => $gambarDariDatabase,
             'userData' => $userData,
             'komentar' => $komentar,
