@@ -33,9 +33,9 @@ class Albumfoto extends Migration
             ],
         ]);
         $this->forge->addKey('albumfotoid', true);
-        $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
-        $this->forge->addForeignKey('albumid', 'album', 'albumid');
-        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+        // $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
+        // $this->forge->addForeignKey('albumid', 'album', 'albumid');
+        // $this->forge->addForeignKey('iduser', 'user', 'iduser');
 
         $this->forge->createTable('albumfoto');
     }

@@ -31,8 +31,8 @@ class Likefoto extends Migration
         ]);
 
         $this->forge->addKey('likeid', true);
-        $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
-        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+        // $this->forge->addForeignKey('idfoto', 'foto', 'idfoto');
+        // $this->forge->addForeignKey('iduser', 'user', 'iduser');
 
         $this->forge->createTable('likefoto');
     }

@@ -37,7 +37,7 @@ class Foto extends Migration
             ],
         ]);
         $this->forge->addKey('idfoto', true); // Ganti 'fotoid' menjadi 'idfoto'
-        $this->forge->addForeignKey('iduser', 'user', 'iduser');
+        // $this->forge->addForeignKey('iduser', 'user', 'iduser');
         $this->forge->createTable('foto');
     }
 

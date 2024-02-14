@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\FotoModel;
+use App\Models\AlbumModel;
 
 helper(['user']);
 class Home extends BaseController
@@ -31,21 +32,30 @@ class Home extends BaseController
 
     public function profile()
     {
-        //cara agar user tidak bisa menuju kemana mana
+        // Pastikan pengguna telah login
         if (!session()->has('iduser')) {
             // Jika belum login, atur pesan flash dan redirect ke halaman login
             session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman profile.');
             return redirect()->to('/login');
         }
 
+        // Ambil data pengguna
         $iduser = session()->get('iduser');
         $userModel = new \App\Models\UserModel();
         $userData = $userModel->find($iduser);
 
-        // Kirim data ke view
+        // Ambil data album pengguna
+        $albumModel = new \App\Models\AlbumModel();
+        $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
+            
+
+        // Kirim data pengguna dan album ke view
         $data['userData'] = $userData;
+        $data['userAlbums'] = $userAlbums;
+
         return view('profile', $data);
     }
+
 
 
     public function kelolaprofile()

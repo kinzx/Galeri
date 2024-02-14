@@ -50,8 +50,9 @@
                         width="100px" height="100px">
                 <?php else: ?>
                     <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
-                                                                        stroke-width=" 1.5" width="100px" height="100px"
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" "
+                                                                                                                        stroke-width=" 1.5" width="100px" height="100px"
                         stroke="currentColor" style="color: black;" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -83,36 +84,20 @@
                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
 
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
                             <div class="modal-body">
-                                Show a second modal and hide this one with the button below.
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                                    data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Hide this modal and show the first with the button below.
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" data-bs-target="#exampleModalToggle"
-                                    data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+                                <form action="/album/create" method="post">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Nama album</label>
+                                        <input type="text" class="form-control" name="namaalbum" id="namaalbum"
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
+                                        <input type="text" class="form-control" name="deskripsi" id="deskripsi">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -130,11 +115,18 @@
         <?php endif; ?>
         <div class="row text-center text-lg-start">
 
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid rounded " src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-                </a>
-            </div>
+            <?php if (!empty($userAlbums)): ?>
+                <ul>
+                    <?php foreach ($userAlbums as $album): ?>
+                        <li>
+                            <?= $album['namaalbum'] ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Belum ada album yang dibuat.</p>
+            <?php endif; ?>
+
             <div class="col-lg-3 col-md-4 col-6">
                 <a href="#" class="d-block mb-4 h-100">
                     <img class="img-fluid rounded " src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">

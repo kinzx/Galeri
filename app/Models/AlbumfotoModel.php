@@ -4,15 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AlbumModel extends Model
+class AlbumfotoModel extends Model
 {
-    protected $table            = 'album';
-    protected $primaryKey       = 'albumid';
+    protected $table            = 'albumfoto';
+    protected $primaryKey       = 'albumfotoid';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['namaalbum','deskripsi','iduser'];
+    protected $allowedFields    = ['albumid','iduser','idfoto'];
+
+    protected bool $allowEmptyInserts = false;
 
     // Dates
     protected $useTimestamps = false;

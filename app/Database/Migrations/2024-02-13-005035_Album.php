@@ -34,7 +34,7 @@ class Album extends Migration
         ]);
 
         $this->forge->addKey('albumid', true);
-        $this->forge->addForeignKey('iduser', 'user', 'iduser'); // Merujuk ke kolom 'iduser' di tabel 'user'
+        // $this->forge->addForeignKey('iduser', 'user', 'iduser'); // Merujuk ke kolom 'iduser' di tabel 'user'
         $this->forge->createTable('album');
     }
 

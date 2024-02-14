@@ -39,8 +39,8 @@ class Komentarfoto extends Migration
         ]);
 
         $this->forge->addKey('komentarid', true);
-        $this->forge->addForeignKey('fotoid', 'foto', 'idfoto');
-        $this->forge->addForeignKey('userid', 'user', 'iduser');
+        // $this->forge->addForeignKey('fotoid', 'foto', 'idfoto');
+        // $this->forge->addForeignKey('userid', 'user', 'iduser');
 
         $this->forge->createTable('komentarfoto');
     }

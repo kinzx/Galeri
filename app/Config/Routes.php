@@ -34,3 +34,7 @@ $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
 
 $routes->post('like/(:num)', 'FotoController::like/$1', ['as' => 'home.like']);
 $routes->post('unlike/(:num)', 'HomeController::unlike/$1', ['as' => 'home.unlike']);
+// app/Config/Routes.php
+
+$routes->post('/album/create', 'AlbumController::create');
+
