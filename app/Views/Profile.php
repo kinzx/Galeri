@@ -52,8 +52,8 @@
                     <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" "
-                                                                                                                        stroke-width=" 1.5" width="100px" height="100px"
-                        stroke="currentColor" style="color: black;" class="w-6 h-6">
+                                                                                                                                        stroke-width=" 1.5" width="100px"
+                        height="100px" stroke="currentColor" style="color: black;" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
@@ -116,22 +116,20 @@
         <div class="row text-center text-lg-start">
 
             <?php if (!empty($userAlbums)): ?>
-                <ul>
-                    <?php foreach ($userAlbums as $album): ?>
-                        <li>
+                <?php foreach ($userAlbums as $album): ?>
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <a href="album ?id=<?= $album['albumid'] ?>" class="d-block mb-4 h-100">
                             <?= $album['namaalbum'] ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                        </a>
+                        <form action="<?= base_url('hapus_album') ?>" method="post">
+                            <input type="hidden" name="album_id" value="<?= $album['albumid'] ?>">
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
             <?php else: ?>
                 <p>Belum ada album yang dibuat.</p>
             <?php endif; ?>
-
-            <div class="col-lg-3 col-md-4 col-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid rounded " src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-                </a>
-            </div>
         </div>
     </div>
 

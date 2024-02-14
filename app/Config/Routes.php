@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/tambah', 'Home::tambah');
 $routes->get('/tes', 'Home::tes');
-$routes->get('/profile', 'Home::profile');
+
 
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::valid_register');
@@ -37,4 +37,7 @@ $routes->post('unlike/(:num)', 'HomeController::unlike/$1', ['as' => 'home.unlik
 // app/Config/Routes.php
 
 $routes->post('/album/create', 'AlbumController::create');
+$routes->get('/album', 'Home::album');
+$routes->get('/profile', 'Home::profile');
+$routes->post('/hapus_album', 'Home::hapus_album');
 

@@ -20,14 +20,39 @@ class Home extends BaseController
     {
         return view('index');
     }
-    public function tambah(): string
-    {
-        return view('tambah');
-    }
+    
 
     public function tes(): string
     {
         return view('tes');
+    }
+
+    public function album()
+    {
+        if (!session()->has('iduser')) {
+            // Jika belum login, atur pesan flash dan redirect ke halaman login
+            session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman profile.');
+            return redirect()->to('/login');
+        }
+
+        $iduser = session()->get('iduser');
+        $userModel = new \App\Models\UserModel();
+        $userData = $userModel->find($iduser);
+
+        // Ambil data album pengguna
+        $albumModel = new \App\Models\AlbumModel();
+        $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
+
+        $data['userData'] = $userData;
+        $data['userAlbums'] = $userAlbums;
+        return view('album', $data);
+    }
+
+    public function hapus_album($albumid)
+    {
+        $this->albumModel->delete($albumid);
+        session()->setFlashdata('success', 'Photo deleted successfully.');
+        return redirect()->to('/kelolafoto');
     }
 
     public function profile()
