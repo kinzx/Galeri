@@ -11,6 +11,7 @@
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="/css/img.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/font.css">
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                            stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
                         1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -58,6 +59,12 @@
 
     <div class="d1">
         <div class="container">
+            <?php
+            // Mengurutkan gambar berdasarkan ID foto secara descending
+            usort($gambarDariDatabase, function ($a, $b) {
+                return $b['idfoto'] - $a['idfoto'];
+            });
+            ?>
             <?php foreach ($gambarDariDatabase as $gambar): ?>
                 <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
@@ -73,7 +80,7 @@
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header d-flex align-items-start border-0">
+                        <div class="modal-header d-flex align-items-start border-1">
                             <h4>
                                 <?= $gambar['judul'] ?>
                             </h4>
@@ -102,7 +109,7 @@
                                                     <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
                                                 1.5" width="45" height="45" stroke="currentColor" style="color: black;"
                                                         class="w-6 h-6">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -122,6 +129,7 @@
                                                     </svg>
                                                 </a>
                                             </div>
+
                                             <div class="ms-auto p-2 bd-highlight">
                                                 <a class=" btn btn-outline-dark" data-bs-toggle="modal"
                                                     href="#exampleModalToggle" style="border-radius: 50px;"
@@ -174,11 +182,12 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="col d-flex justify-content-between">
                                         <div class="card border-0" style="width: 23rem;">
                                             <ul class="list-group list-group-flush">
-                                                <p>
+                                                <p style="max-height: 0px; overflow-y: auto;">
                                                     <?= $gambar['deskripsi'] ?>
                                                 </p>
 
@@ -186,23 +195,39 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="komentar">
-                                        <h6>Komentar</h6>
-                                        <?php foreach ($komentar as $komentar): ?>
-                                            <?php if ($komentar['fotoid'] == $gambar['idfoto']): ?>
-                                                <div class=" comment">
-                                                    <!-- Menampilkan avatar pengguna yang berkomentar -->
-                                                    <img src="<?= $komentar['avatar']; ?>" alt="Avatar" class="avatar">
-                                                    <!-- Menampilkan deskripsi komentar -->
-                                                    <p>
-                                                        <?= $komentar['deskripsi']; ?>
-                                                    </p>
+                                    <br>
+                                    <h6>Komentar</h6>
+                                    <div id="komentarContainer"  style="max-height: 500px; overflow-y: auto;">
+                                        <?php foreach ($komentar as $komen): ?>
+                                            <?php if (isset($komen['avatar']) && $komen['fotoid'] == $gambar['idfoto']): ?>
+                                                <div class="komentar-item p-3 mb-1 rounded-lg shadow-sm">
+                                                    <div class="d-flex align-items-center">
+                                                        <?php if ($komen['avatar']): ?>
+                                                            <img src="<?= base_url('/uploads/' . $komen['avatar']) ?>" alt="Avatar"
+                                                                class="rounded-circle me-3" width="45px" height="45px">
+                                                        <?php else: ?>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                                stroke-width="1.5" width="45" height="45" stroke="currentColor"
+                                                                style="color: black;" class="me-3">
+                                                            </svg>
+                                                        <?php endif; ?>
+                                                        <div>
+                                                            <strong>
+                                                                <?= $komen['username']; ?>
+                                                            </strong>
+                                                            <div>
+                                                                <?= $komen['deskripsi']; ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
-                                        <hr>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="Komen">
                                         <form action=" /home/<?= $gambar['idfoto'] ?>" method="post">
                                             <div class="input-group mb-3">
                                                 <input type="text" class="form-control " style="border-radius: 50px;"
@@ -233,6 +258,19 @@
     </div>
 
     <!-- Masonry.js CDN -->
+    <script>
+        // Fungsi untuk menambahkan komentar baru
+        function tambahKomentarBaru(komentarHTML) {
+            var komentarContainer = document.getElementById("komentarContainer");
+            komentarContainer.innerHTML += komentarHTML;
+            // Gulir ke bawah untuk menampilkan komentar baru
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+    // Contoh penggunaan: tambahkan komentar baru dari server
+    // var komentarBaru = "<div class='komentar-item'>...</div>";
+    // tambahKomentarBaru(komentarBaru);
+    </script>
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/custom.js') ?>"></script>

@@ -6,11 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/css/font.css">
 
     <title>Document</title>
+    <style>
+        body {
+            background-image: url('/img/bg-signup.jpg');
+            background-size: cover;
+            /* Properti ini akan memastikan gambar latar belakang menutupi seluruh area body */
+            background-repeat: no-repeat;
+            /* Untuk memastikan gambar tidak diulang */
+        }
+    </style>
 </head>
 
-<body>
+<body >
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-50">

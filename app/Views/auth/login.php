@@ -7,8 +7,18 @@
   <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
   <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
   <title>Login</title>
-</head>
+  <link rel="stylesheet" href="/css/font.css">
 
+</head>
+<style>
+  body {
+            background-image: url('/img/bg-masthead.jpg');
+            background-size: cover;
+            /* Properti ini akan memastikan gambar latar belakang menutupi seluruh area body */
+            background-repeat: no-repeat;
+            /* Untuk memastikan gambar tidak diulang */
+        }
+</style>
 <body>
   <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">

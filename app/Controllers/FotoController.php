@@ -119,37 +119,26 @@ class FotoController extends BaseController
         $komentarModel = new KomentarfotoModel();
         $fotoModel = new FotoModel();
         $gambarDariDatabase = $fotoModel->getFotoWithUser();
-        $komentar = $komentarModel->getKomentarWithAvatar();
+        $komentar = $komentarModel->getKomentarWithAvatar(); // Ambil komentar dengan avatar
 
-        $userModel = new \App\Models\UserModel();
-        $userData = $userModel->find($iduser);
+        // Mendapatkan data album pengguna
         $albumModel = new \App\Models\AlbumModel();
         $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
-        // echo "<pre>" ;
-        // print_r($data['gambarDariDatabase']);
-        // echo "</pre>" ;
-        // die;
-        $isLikedArray = [];
 
         // Mendapatkan status "like" untuk setiap foto
+        $isLikedArray = [];
         foreach ($gambarDariDatabase as $gambar) {
-            // Memeriksa apakah pengguna sudah melakukan "like" pada foto ini
             $isLiked = $this->likeModel->isLiked($iduser, $gambar['idfoto']);
             $isLikedArray[$gambar['idfoto']] = $isLiked;
         }
 
-        // Mendapatkan data komentar dari model
-        $komentarModel = new \App\Models\KomentarfotoModel();
-        $komentar = $komentarModel->findAll();
-
         // Mengirimkan data ke view
         $data = [
-            'userData'=> $userData,
-            'userAlbums'=> $userAlbums,
+            'userAlbums' => $userAlbums,
             'gambarDariDatabase' => $gambarDariDatabase,
             'userData' => $userData,
-            'komentar' => $komentar,
-            'isLikedArray' => $isLikedArray // Menyimpan status "like" untuk setiap foto
+            'komentar' => $komentar, // Kirim data komentar ke view
+            'isLikedArray' => $isLikedArray
         ];
 
         return view('home', $data);

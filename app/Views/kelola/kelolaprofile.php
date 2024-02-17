@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/tes.php') ?>" rel="stylesheet">
-    <title>Document</title>
+    <title>Glaria</title>
+    <link rel="stylesheet" href="/css/font.css">
+
 </head>
 
 <body>

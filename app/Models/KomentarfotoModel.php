@@ -16,7 +16,9 @@ class KomentarfotoModel extends Model
     public function getKomentarByFotoId($fotoid)
     {
         return $this->where('fotoid', $fotoid)->findAll();
+
     }
+
 
     // Dates
     protected $useTimestamps = false;
@@ -42,10 +44,11 @@ class KomentarfotoModel extends Model
     protected $beforeDelete = [];
     protected $afterDelete = [];
 
+
     public function getKomentarWithAvatar()
     {
         return $this->db->table('komentarfoto')
-            ->select('komentarfoto.*, user.avatar')
+            ->select('komentarfoto.*, user.avatar, user.username') // Menambahkan field username
             ->join('user', 'user.iduser = komentarfoto.userid')
             ->get()
             ->getResultArray();

@@ -9,7 +9,7 @@
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('css/tambah.css') ?>">
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
-
+    <link rel="stylesheet" href="/css/font.css">
 </head>
 
 <body>
