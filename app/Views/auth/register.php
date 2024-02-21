@@ -27,9 +27,7 @@
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-lihgt shadow-lg p-3 mb-5 bg-body  text-black" style="border-radius: 3rem;">
                         <div class="card-body p-5 text-center">
-
                             <div class="mt-md-4 pb-5">
-
                                 <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                                 <p class="text-black-50 mb-5">create an account!</p>
                                 <?php

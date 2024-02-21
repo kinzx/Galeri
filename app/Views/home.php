@@ -187,11 +187,9 @@
                                     <div class="col d-flex justify-content-between">
                                         <div class="card border-0" style="width: 23rem;">
                                             <ul class="list-group list-group-flush">
-                                                <p style="max-height: 0px; overflow-y: auto;">
+                                                <p style="max-height: 77px; overflow-y: auto;">
                                                     <?= $gambar['deskripsi'] ?>
                                                 </p>
-
-                                                <li class="list-group-item border-0"></li>
                                             </ul>
                                         </div>
                                     </div>
