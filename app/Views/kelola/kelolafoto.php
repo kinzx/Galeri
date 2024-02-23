@@ -72,7 +72,7 @@
             <?php foreach ($gambarDariDatabase as $gambar): ?>
                 <a class="row rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                    <img class="mb-3" src="<?= $gambarPath ?>" alt="">
+                    <img class="mb-3"style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
                 </a>
             <?php endforeach; ?>
         </div>
@@ -81,7 +81,7 @@
             <div class="modal fade " id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content ">
                         <div class="modal-body ">
                             <div class="row">
                                 <div class="col-md-6 ">

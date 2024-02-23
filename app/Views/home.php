@@ -45,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            stroke-width="
                         1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -68,7 +68,7 @@
             <?php foreach ($gambarDariDatabase as $gambar): ?>
                 <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                    <img class="mb-3 rounded-4" src="<?= $gambarPath ?>" alt="">
+                    <img class="mb-3 " style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
                 </a>
 
             <?php endforeach; ?>
@@ -79,14 +79,14 @@
             <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" aria-hidden="true"
                 aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content border border-5 border-dark" style="border-radius: 25px;">
                         <div class="modal-header d-flex align-items-start border-1">
                             <h4>
                                 <?= $gambar['judul'] ?>
                             </h4>
                             <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body ">
                             <div class="row">
                                 <div class="col-md-6">
                                     <?php
@@ -107,7 +107,7 @@
                                                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
                                                     1.5" width="45" height="45" stroke="currentColor"
                                                             style="color: black;" class="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -130,14 +130,11 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="ms-auto p-2 bd-highlight"><button class="btn btn-outline-success"
-                                                    style="height: 50px;" data-bs-target="#exampleModalToggle2"
-                                                    data-bs-toggle="modal" data-bs-dismiss="modal">Simpan</button></div>
+                                            <div class="ms-auto p-2 bd-highlight"><button class="btn btn-outline-dark"
+                                                    style="height: 50px; border-radius: 50px;"
+                                                    data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                                                    data-bs-dismiss="modal">Simpan</button></div>
                                         </div>
-
-
-
-
                                     </div>
                                     <div class="col d-flex justify-content-between">
                                         <div class="card border-0" style="width: 23rem;">
@@ -179,27 +176,25 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="Komen">
-                                        <form action=" /home/<?= $gambar['idfoto'] ?>" method="post">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control " style="border-radius: 50px;"
-                                                    name="deskripsi" placeholder="Tambahkan komentar..."
-                                                    aria-label="Tambahkan komentar..." aria-describedby="basic-addon2">
-                                                <!-- Tambahkan input hidden untuk menyimpan fotoid -->
-                                                <input type="hidden" name="fotoid" value="<?= $gambar['idfoto'] ?>">
-                                                <button style="border-radius: 50px;" type="submit" class="input-group-text"
-                                                    id="basic-addon2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" stroke="currentColor" width="10" height="10"
-                                                        class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                <div class="Komen">
+                                    <form action=" /home/<?= $gambar['idfoto'] ?>" method="post">
+                                        <div class="input-group mb-3 d-flex align-items-center ">
+                                            <input type="text" class="form-control " style="border-radius: 50px;"
+                                                name="deskripsi" placeholder="Tambahkan komentar..."
+                                                aria-label="Tambahkan komentar..." aria-describedby="basic-addon2">
+                                            <!-- Tambahkan input hidden untuk menyimpan fotoid -->
+                                            <input type="hidden" name="fotoid" value="<?= $gambar['idfoto'] ?>">
+                                            <button style="border-radius: 50px;" type="submit" class="input-group-text"
+                                                id="basic-addon2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor" width="10" height="10"
+                                                    class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

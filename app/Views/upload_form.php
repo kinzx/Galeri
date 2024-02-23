@@ -64,8 +64,8 @@
                 <div class="container ">
                     <div class="row justify-content-center">
                         <div class="col-12 col-xl-10">
-                            <div class="card shadow-lg p-3 mb-5 bg-body rounded">
-                                <div class="card-body  ">
+                            <div class="card shadow-lg p-3 mb-5 bg-body " >
+                                <div class="card-body">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-md-6 col-xl-7">
                                             <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px">
