@@ -45,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
                         1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -70,14 +70,14 @@
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
                     <img class="mb-3 rounded-4" src="<?= $gambarPath ?>" alt="">
                 </a>
+
             <?php endforeach; ?>
         </div>
 
-        <!-- Modal for each image -->
         <?php foreach ($gambarDariDatabase as $gambar): ?>
-
-            <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- modal gambar -->
+            <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" aria-hidden="true"
+                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header d-flex align-items-start border-1">
@@ -96,92 +96,47 @@
                                 </div>
                                 <div class="col-md-6  ">
                                     <div class="row ">
-                                        <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <!-- Modal content -->
-                                        </div>
-                                        <div class="d-flex bd-highli ght">
-                                            <div class="p-2 bd-highlight d-flex align-items-center">
-                                                <?php if ($gambar['avatar']): ?>
-                                                    <img src=" <?= base_url('/uploads/' . $gambar['avatar']) ?>" alt="Avatar"
-                                                        class="rounded-circle  " width="45px" height="45px">
-                                                <?php else: ?>
-                                                    <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
-                                                1.5" width="45" height="45" stroke="currentColor" style="color: black;"
-                                                        class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                    </svg>
 
-                                                <?php endif; ?>
-                                            </div>
+                                        <div class="d-flex bd-highlight mb-3">
                                             <div class="p-2 bd-highlight">
-                                                <a href="<?= base_url('like/' . $gambar['idfoto']) ?>" class="btn">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="1.5" width="40" height="40"
-                                                        stroke="<?= $isLikedArray[$gambar['idfoto']] ? 'red' : 'currentColor' ?>"
-                                                        class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                                                    </svg>
-                                                </a>
-                                            </div>
+                                                <div class="p-2 bd-highlight d-flex align-items-center">
+                                                    <?php if ($gambar['avatar']): ?>
+                                                        <img src=" <?= base_url('/uploads/' . $gambar['avatar']) ?>"
+                                                            alt="Avatar" class="rounded-circle  " width="45px" height="45px">
+                                                    <?php else: ?>
+                                                        <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" "
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                stroke-width="
+                                                    1.5" width="45" height="45" stroke="currentColor"
+                                                            style="color: black;" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                        </svg>
 
-                                            <div class="ms-auto p-2 bd-highlight">
-                                                <a class=" btn btn-outline-dark" data-bs-toggle="modal"
-                                                    href="#exampleModalToggle" style="border-radius: 50px;"
-                                                    role="button">Simpan</a>
-                                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalToggleLabel">Album
-                                                                </h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <ul>
-                                                                    <li>
-                                                                        <?php if (!empty($userAlbums)): ?>
-                                                                            <?php foreach ($userAlbums as $album): ?>
-                                                                                <div class="col-lg-3 col-md-4 col-6">
-                                                                                    <div class="card" style="width: 18rem;">
-                                                                                        <div class="card-body">
-                                                                                            <a href="album ?id=<?= $album['albumid'] ?>"
-                                                                                                class="d-block mb-4 h-100">
-                                                                                                <h5 class="card-title">
-                                                                                                    <?= $album['namaalbum'] ?>
-                                                                                                </h5>
-                                                                                                <p class="card-text">
-                                                                                                    <?= $album['deskripsi'] ?>
-                                                                                                </p>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            <?php endforeach; ?>
-                                                                        <?php else: ?>
-                                                                            <p>Belum ada album yang dibuat.</p>
-                                                                        <?php endif; ?>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button class="btn btn-primary"
-                                                                    data-bs-target="#exampleModalToggle2"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-dismiss="modal">Simpan</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
+                                            <div class="p-2 bd-highlight">
+                                                <div class="p-2 bd-highlight">
+                                                    <a href="<?= base_url('like/' . $gambar['idfoto']) ?>" class="btn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" width="40" height="40"
+                                                            stroke="<?= $isLikedArray[$gambar['idfoto']] ? 'red' : 'currentColor' ?>"
+                                                            class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="ms-auto p-2 bd-highlight"><button class="btn btn-outline-success"
+                                                    style="height: 50px;" data-bs-target="#exampleModalToggle2"
+                                                    data-bs-toggle="modal" data-bs-dismiss="modal">Simpan</button></div>
                                         </div>
+
+
+
 
                                     </div>
                                     <div class="col d-flex justify-content-between">
@@ -195,7 +150,7 @@
                                     </div>
                                     <br>
                                     <h6>Komentar</h6>
-                                    <div id="komentarContainer"  style="max-height: 500px; overflow-y: auto;">
+                                    <div id="komentarContainer" style="max-height: 500px; overflow-y: auto;">
                                         <?php foreach ($komentar as $komen): ?>
                                             <?php if (isset($komen['avatar']) && $komen['fotoid'] == $gambar['idfoto']): ?>
                                                 <div class="komentar-item p-3 mb-1 rounded-lg shadow-sm">
@@ -223,7 +178,7 @@
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="Komen">
                                         <form action=" /home/<?= $gambar['idfoto'] ?>" method="post">
@@ -251,8 +206,49 @@
                     </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+                tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel2"> Simpan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>
+                                    <?php if (!empty($userAlbums)): ?>
+                                        <?php foreach ($userAlbums as $album): ?>
+                                            <div class="col-lg-3 col-md-4 col-6">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-body">
+                                                        <a href="album ?id=<?= $album['albumid'] ?>" class="d-block mb-4 h-100">
+                                                            <h5 class="card-title">
+                                                                <?= $album['namaalbum'] ?>
+                                                            </h5>
+                                                            <p class="card-text">
+                                                                <?= $album['deskripsi'] ?>
+                                                            </p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p>Belum ada album yang dibuat.</p>
+                                    <?php endif; ?>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                                data-bs-dismiss="modal">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <?php endforeach; ?>
     </div>
 
     <!-- Masonry.js CDN -->
@@ -265,9 +261,9 @@
             window.scrollTo(0, document.body.scrollHeight);
         }
 
-    // Contoh penggunaan: tambahkan komentar baru dari server
-    // var komentarBaru = "<div class='komentar-item'>...</div>";
-    // tambahKomentarBaru(komentarBaru);
+        // Contoh penggunaan: tambahkan komentar baru dari server
+        // var komentarBaru = "<div class='komentar-item'>...</div>";
+        // tambahKomentarBaru(komentarBaru);
     </script>
     <script src="<?= base_url('bootstrap-5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('bootstrap-5.0.2/js/tiny-slider.js') ?>"></script>

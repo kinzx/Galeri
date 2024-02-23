@@ -32,8 +32,7 @@ $routes->post('/uploadForm', 'FotoController::upload');
 $routes->get('/home', 'FotoController::home');
 $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
 
-$routes->post('like/(:num)', 'FotoController::like/$1', ['as' => 'home.like']);
-$routes->post('unlike/(:num)', 'HomeController::unlike/$1', ['as' => 'home.unlike']);
+$routes->get('like/(:num)', 'FotoController::like/$1');
 
 $routes->post('/album/create', 'AlbumController::create');
 $routes->get('/album', 'Home::album');
