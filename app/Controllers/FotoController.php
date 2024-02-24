@@ -144,6 +144,8 @@ class FotoController extends BaseController
             'isLikedArray' => $isLikedArray
         ];
 
+//         var_dump($gambarDariDatabase);
+// die;
         return view('home', $data);
     }
 

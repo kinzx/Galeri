@@ -60,7 +60,6 @@
     <div class="d1">
         <div class="container">
             <?php
-            // Mengurutkan gambar berdasarkan ID foto secara descending
             usort($gambarDariDatabase, function ($a, $b) {
                 return $b['idfoto'] - $a['idfoto'];
             });
@@ -132,7 +131,7 @@
                                             </div>
                                             <div class="ms-auto p-2 bd-highlight"><button class="btn btn-outline-dark"
                                                     style="height: 50px; border-radius: 50px;"
-                                                    data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModalToggle2<?= $gambar['idfoto'] ?>" data-bs-toggle="modal"
                                                     data-bs-dismiss="modal">Simpan</button></div>
                                         </div>
                                     </div>
@@ -201,7 +200,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            <div class="modal fade" id="exampleModalToggle2<?= $gambar['idfoto'] ?>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                 tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
