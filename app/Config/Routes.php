@@ -31,6 +31,7 @@ $routes->post('/uploadForm', 'FotoController::upload');
 
 $routes->get('/home', 'FotoController::home');
 $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
+$routes->post('/simpan-foto', 'FotoController::simpanFoto');
 
 $routes->get('like/(:num)', 'FotoController::like/$1');
 

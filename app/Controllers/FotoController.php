@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\FotoModel;
 use App\Models\KomentarfotoModel;
+use App\Models\AlbumModel;
+use App\Models\AlbumfotoModel;
 
 class FotoController extends BaseController
 {
@@ -15,7 +17,8 @@ class FotoController extends BaseController
     {
         $this->fotoModel = new \App\Models\FotoModel();
         $this->userModel = new \App\Models\UserModel();
-        // $this->likefotoModel = new \App\Models\LikefotoModel();
+        $this->albumModel = new \App\Models\AlbumModel();
+        $this->albumfotoModel = new \App\Models\AlbumfotoModel();
         $this->likeModel = new \App\Models\LikefotoModel();
 
 
@@ -142,6 +145,43 @@ class FotoController extends BaseController
         ];
 
         return view('home', $data);
+    }
+
+    public function simpanFoto()
+    {
+        // Ambil data yang dikirim dari formulir
+        $idfoto = $this->request->getPost('idfoto');
+        $albumid = $this->request->getPost('albumid');
+
+        // Validasi data (misalnya, pastikan ID foto dan album ID adalah bilangan bulat positif)
+
+        // Periksa ketersediaan album untuk pengguna yang sedang login
+        $albumModel = new AlbumModel();
+        $album = $albumModel->find($albumid);
+
+        if (!$album || $album['iduser'] != session()->get('iduser')) {
+            // Album tidak ditemukan atau bukan milik pengguna yang sedang login
+            // Tampilkan pesan error dan redirect kembali ke halaman home
+            session()->setFlashdata('error', 'Album tidak valid.');
+            return redirect()->to('/home');
+        }
+
+        // Lakukan proses penyimpanan foto ke dalam album di sini
+        // Misalnya, tambahkan data baru ke dalam tabel albumisi menggunakan model AlbumfotoModel
+        $albumfotoModel = new AlbumfotoModel();
+        $data = [
+            'iduser' => session()->get('iduser'),
+            'idfoto' => $idfoto,
+            'albumid' => $albumid,
+            // Tambahkan kolom lain sesuai kebutuhan (misalnya, tanggal pembuatan)
+        ];
+
+        // Simpan data ke dalam tabel albumisi menggunakan model AlbumfotoModel
+        $albumfotoModel->insert($data);
+
+        // Berikan feedback ke pengguna bahwa foto berhasil disimpan ke dalam album
+        session()->setFlashdata('success', 'Foto berhasil disimpan ke dalam album.');
+        return redirect()->to('/home');
     }
 
 

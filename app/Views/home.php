@@ -45,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    stroke-width="
                         1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -107,7 +107,7 @@
                                                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
                                                     1.5" width="45" height="45" stroke="currentColor"
                                                             style="color: black;" class="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -210,39 +210,24 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <ul>
-                                <li>
-                                    <?php if (!empty($userAlbums)): ?>
+                            <form action="<?= base_url('simpan-foto') ?>" method="post">
+                                <input type="hidden" name="idfoto" value="<?= $gambar['idfoto'] ?>">
+                                <div class="mb-3">
+                                    <label for="albumSelect<?= $gambar['idfoto'] ?>" class="form-label">Pilih Album:</label>
+                                    <select class="form-select" id="albumSelect<?= $gambar['idfoto'] ?>" name="albumid">
                                         <?php foreach ($userAlbums as $album): ?>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <div class="card" style="width: 18rem;">
-                                                    <div class="card-body">
-                                                        <a href="album ?id=<?= $album['albumid'] ?>" class="d-block mb-4 h-100">
-                                                            <h5 class="card-title">
-                                                                <?= $album['namaalbum'] ?>
-                                                            </h5>
-                                                            <p class="card-text">
-                                                                <?= $album['deskripsi'] ?>
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <option value="<?= $album['albumid'] ?>">
+                                                <?= $album['namaalbum'] ?>
+                                            </option>
                                         <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <p>Belum ada album yang dibuat.</p>
-                                    <?php endif; ?>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">Simpan</button>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
         <?php endforeach; ?>
     </div>
 
