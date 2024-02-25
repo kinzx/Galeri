@@ -45,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    stroke-width="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            stroke-width="
                         1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -67,9 +67,26 @@
             <?php foreach ($gambarDariDatabase as $gambar): ?>
                 <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                    <img class="mb-3 " style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
-                </a>
+                    <img class="" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
 
+                </a>
+                <div>
+                   <?php if ($gambar['avatar']): ?>
+                    <img src=" <?= base_url('/uploads/' . $gambar['avatar']) ?>" alt="Avatar" class="rounded-circle  "
+                        width="45" height="45">
+                <?php else: ?>
+                    <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" " 1.5" width="45" height="45"
+                        stroke="currentColor" style="color: black;" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+
+                <?php endif; ?>
+                <?= $gambar['judul'] ?> 
+                </div>
+                
+                
             <?php endforeach; ?>
         </div>
 
@@ -105,10 +122,8 @@
                                                     <?php else: ?>
                                                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        stroke-width="
-                                                    1.5" width="45" height="45" stroke="currentColor"
-                                                            style="color: black;" class="w-6 h-6">
+                                                            viewBox="0 0 24 24" " 1.5" width="45" height="45"
+                                                            stroke="currentColor" style="color: black;" class="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                         </svg>
@@ -131,8 +146,8 @@
                                             </div>
                                             <div class="ms-auto p-2 bd-highlight"><button class="btn btn-outline-dark"
                                                     style="height: 50px; border-radius: 50px;"
-                                                    data-bs-target="#exampleModalToggle2<?= $gambar['idfoto'] ?>" data-bs-toggle="modal"
-                                                    data-bs-dismiss="modal">Simpan</button></div>
+                                                    data-bs-target="#exampleModalToggle2<?= $gambar['idfoto'] ?>"
+                                                    data-bs-toggle="modal" data-bs-dismiss="modal">Simpan</button></div>
                                         </div>
                                     </div>
                                     <div class="col d-flex justify-content-between">
@@ -200,8 +215,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModalToggle2<?= $gambar['idfoto'] ?>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-                tabindex="-1">
+            <div class="modal fade" id="exampleModalToggle2<?= $gambar['idfoto'] ?>" aria-hidden="true"
+                aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">

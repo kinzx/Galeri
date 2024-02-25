@@ -9,7 +9,7 @@ use App\Models\AlbumModel;
 helper(['user']);
 class Home extends BaseController
 {
-    
+
     protected $session; // Tambahkan properti untuk menyimpan referensi sesi
 
     public function __construct()
@@ -22,7 +22,7 @@ class Home extends BaseController
     {
         return view('index');
     }
-    
+
 
     public function tes(): string
     {
@@ -31,6 +31,8 @@ class Home extends BaseController
 
     public function album()
     {
+        $albumid = $this->request->getGet('id'); // Ambil nilai id dari URL
+
         if (!session()->has('iduser')) {
             // Jika belum login, atur pesan flash dan redirect ke halaman login
             session()->setFlashdata('error', 'Anda harus login untuk mengakses halaman profile.');
@@ -43,21 +45,48 @@ class Home extends BaseController
 
         // Ambil data album pengguna
         $albumModel = new \App\Models\AlbumModel();
-        $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
+        // Ambil detail album berdasarkan albumid yang diberikan
+        $album = $albumModel->find($albumid);
 
+        // Periksa apakah album ditemukan dan milik pengguna yang sedang login
+        if (!$album || $album['iduser'] != $iduser) {
+            // Album tidak ditemukan atau bukan milik pengguna yang sedang login
+            // Tampilkan pesan error dan redirect kembali ke halaman album
+            session()->setFlashdata('error', 'Album tidak valid atau Anda tidak memiliki akses ke album ini.');
+            return redirect()->to('/album');
+        }
+
+        // Ambil data album pengguna
+        $albumModel = new \App\Models\AlbumModel();
+        // Ambil data gambar dalam album dari tabel albumfoto
+        $albumfotoModel = new \App\Models\AlbumfotoModel();
+        $gambarAlbum = $albumfotoModel->where('albumid', $albumid)->findAll();
+
+        $fotoModel = new FotoModel();
+        $gambarDariDatabase = $fotoModel->getFotoWithUser();
+
+        // Kirim data album dan gambar-gambar dalam album ke view
         $data['userData'] = $userData;
-        $data['userAlbums'] = $userAlbums;
-        
+        $data['gambarDariDatabase'] = $gambarDariDatabase;
+        $data['album'] = $album;
+        $data['gambarAlbum'] = $gambarAlbum;
+
+        // echo "<pre>";
+        // print_r($data['userData']);
+        // echo "</pre>";
         return view('album', $data);
     }
 
+
+
+
     public function hapus_album($albumid)
     {
-    // Hapus entri album itu sendiri
-    $this->albumModel->delete($albumid);
+        // Hapus entri album itu sendiri
+        $this->albumModel->delete($albumid);
 
-    session()->setFlashdata('error', 'Album berhasil dihapus.');
-    return redirect()->to('/profile');
+        session()->setFlashdata('error', 'Album berhasil dihapus.');
+        return redirect()->to('/profile');
     }
 
     public function profile()
@@ -77,7 +106,7 @@ class Home extends BaseController
         // Ambil data album pengguna
         $albumModel = new \App\Models\AlbumModel();
         $userAlbums = $albumModel->where('iduser', $iduser)->findAll();
-            
+
 
         // Kirim data pengguna dan album ke view
         $data['userData'] = $userData;

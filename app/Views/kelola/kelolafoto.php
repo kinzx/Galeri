@@ -45,7 +45,7 @@
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" "
-                                                                                                                        stroke-width=" 1.5" width="45" height="45"
+                                                                                                                            stroke-width=" 1.5" width="45" height="45"
                             stroke="currentColor" style="color: black;" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -72,7 +72,7 @@
             <?php foreach ($gambarDariDatabase as $gambar): ?>
                 <a class="row rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                    <img class="mb-3"style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
+                    <img class="mb-3" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
                 </a>
             <?php endforeach; ?>
         </div>
@@ -81,14 +81,17 @@
             <div class="modal fade " id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
+
                     <div class="modal-content ">
+                        <div class="modal-header d-flex align-items-start border-1">
+                            <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
                         <div class="modal-body ">
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <?php
                                     $gambarPath = base_url('uploads/' . $gambar['lokasifoto']);
                                     ?>
-
                                     <img class="img-fluid rounded mb-3 " st src="<?= $gambarPath ?>" alt="">
                                 </div>
                                 <div class="col-md-6">
@@ -107,7 +110,8 @@
                                                         </li>
                                                         <li class="list-group-item border-0">
                                                             <label for="">Deskripsi</label>
-                                                            <input type="text" class="form-control" name="deskripsi" value="<?= $gambar['deskripsi'] ?>">
+                                                            <input type="text" class="form-control" name="deskripsi"
+                                                                value="<?= $gambar['deskripsi'] ?>">
                                                         </li>
                                                         <li class="list-group-item border-0">
                                                             <button class="btn btn-success" type="submit">Edit</button>

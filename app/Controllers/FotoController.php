@@ -144,8 +144,8 @@ class FotoController extends BaseController
             'isLikedArray' => $isLikedArray
         ];
 
-//         var_dump($gambarDariDatabase);
-// die;
+        // var_dump($gambarDariDatabase);
+        // die;
         return view('home', $data);
     }
 
@@ -154,8 +154,6 @@ class FotoController extends BaseController
         // Ambil data yang dikirim dari formulir
         $idfoto = $this->request->getPost('idfoto');
         $albumid = $this->request->getPost('albumid');
-
-        // Validasi data (misalnya, pastikan ID foto dan album ID adalah bilangan bulat positif)
 
         // Periksa ketersediaan album untuk pengguna yang sedang login
         $albumModel = new AlbumModel();
@@ -168,8 +166,18 @@ class FotoController extends BaseController
             return redirect()->to('/home');
         }
 
-        // Lakukan proses penyimpanan foto ke dalam album di sini
-        // Misalnya, tambahkan data baru ke dalam tabel albumisi menggunakan model AlbumfotoModel
+        // Periksa ketersediaan foto yang dipilih
+        $fotoModel = new FotoModel();
+        $foto = $fotoModel->find($idfoto);
+
+        if (!$foto) {
+            // Foto tidak ditemukan
+            // Tampilkan pesan error dan redirect kembali ke halaman home
+            session()->setFlashdata('error', 'Foto tidak valid.');
+            return redirect()->to('/home');
+        }
+
+        // Lakukan proses penyimpanan foto ke dalam album
         $albumfotoModel = new AlbumfotoModel();
         $data = [
             'iduser' => session()->get('iduser'),
@@ -178,13 +186,14 @@ class FotoController extends BaseController
             // Tambahkan kolom lain sesuai kebutuhan (misalnya, tanggal pembuatan)
         ];
 
-        // Simpan data ke dalam tabel albumisi menggunakan model AlbumfotoModel
+        // Simpan data ke dalam tabel albumfoto menggunakan model AlbumfotoModel
         $albumfotoModel->insert($data);
 
         // Berikan feedback ke pengguna bahwa foto berhasil disimpan ke dalam album
         session()->setFlashdata('success', 'Foto berhasil disimpan ke dalam album.');
         return redirect()->to('/home');
     }
+
 
 
     // public function kelolafoto()
