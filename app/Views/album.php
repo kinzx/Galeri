@@ -11,11 +11,21 @@
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
     <link rel="stylesheet" href="/css/font.css">
     <link href="/css/img.css" rel="stylesheet">
+    <style>
+        .home-title {
+            border-bottom: 2px solid black;
+            /* Garis hitam di bawah tulisan */
+            display: inline-block;
+            /* Agar garis tepat berada di bawah tulisan */
+            padding-bottom: 10px;
+            /* Jarak antara tulisan dan garis */
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +58,9 @@
             </div>
         </div>
     </nav>
+    <div class="text-center mb-3">
+        <h2 class="home-title">Kelolafoto</h2>
+    </div>
     <div class="container">
 
         <?php foreach ($gambarAlbum as $albumitem) :
@@ -57,7 +70,7 @@
                     $gambarPath = base_url('uploads/' . $gambar['lokasifoto'] ?? 'default.jpg');
                     ?>
                     <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
-                        <img class="mb-3" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
+                        <img class="mb-3"  src="<?= $gambarPath ?>" alt="">
                     </a>
         <?php endif;
             endforeach;

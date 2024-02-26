@@ -10,11 +10,21 @@
     <link rel="stylesheet" href="<?= base_url('css/tambah.css') ?>">
     <!-- <link href="<?= base_url('css/back.css') ?>" rel="stylesheet"> -->
     <link rel="stylesheet" href="/css/font.css">
+    <style>
+        .home-title {
+            border-bottom: 2px solid black;
+            /* Garis hitam di bawah tulisan */
+            display: inline-block;
+            /* Agar garis tepat berada di bawah tulisan */
+            padding-bottom: 10px;
+            /* Jarak antara tulisan dan garis */
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -52,7 +62,9 @@
             </div>
         </div>
     </nav>
-
+    <div class="text-center mb-3">
+        <h2 class="home-title">Tambah foto</h2>
+    </div>
     <?php if (session()->has('success') || session()->has('error')): ?>
         <div class="alert alert-<?php echo session()->has('success') ? 'success' : 'danger'; ?>" role="alert">
             <?= session()->has('success') ? session('success') : session('error'); ?>
@@ -66,20 +78,20 @@
                         <div class="col-12 col-xl-10">
                             <div class="card shadow-lg p-3 mb-5 bg-body " >
                                 <div class="card-body">
-                                    <div class="row d-flex align-items-center">
+                                    <div class="row d-flex align-items-start">
                                         <div class="col-md-6 col-xl-7">
-                                            <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px">
+                                            <div class="text-center pt-md-2 pb-5 " style="padding-right: 24px">
                                                 <input type="file" class="form-control mb-3" id="image"
                                                     name="lokasifile" accept="image/*" required />
                                                 <div class="img-preview"></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4">
-
+                                        
+                                        <div class="col-md-6 col-xl-4 ">
                                             <div class="form-outline mb-3">
                                                 <label for="judul" class="form-label">Judul:</label>
                                                 <input type="text" class="form-control" id="judul" name="judul"
-                                                    value="<?= old('judul') ?>" />
+                                                    value="<?= old('judul') ?>" /><label style="font-size: 12px; "><span style="font-size: 12px; color: red; ">*</span>Harus diisi</label>
                                             </div>
 
                                             <div class="form-outline mb-4">
@@ -89,7 +101,7 @@
                                             </div>
 
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary">
+                                                <button style="border-radius: 50px;" type="submit" class="btn btn-primary">
                                                     Upload
                                                 </button>
                                             </div>

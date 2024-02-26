@@ -25,7 +25,7 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth/login');
-        
+
     }
 
     public function valid_login()
@@ -88,21 +88,18 @@ class AuthController extends Controller
     {
         $data = $this->request->getPost();
 
-        // Validasi input
-        $rules = [
+        $validation = \Config\Services::validation();
+        $validation->setRules([
             'username' => 'required|alpha_numeric|min_length[3]|max_length[255]',
             'email' => 'required|valid_email|is_unique[user.email]',
             'password' => 'required|min_length[8]',
-        ];
-        
-        $errors = [
-            'password.max_length' => 'Password terlalu panjang. Maksimum 255 karakter diperbolehkan.',
-            'email.is_unique' => 'Alamat email ini sudah terdaftar. Silakan gunakan alamat email lain.',
-        ];
-        
-        if (!$this->validate($rules, $errors)) {
-            // Menangani kesalahan validasi
-            return redirect()->to('/register')->withInput()->with('validation', $this->validator);
+        ]);
+
+        // Melakukan validasi terhadap data yang diterima
+        if (!$validation->run($data)) {
+            // Jika validasi gagal, kembalikan ke halaman registrasi dengan pesan kesalahan
+            session()->setFlashdata('error', $validation->getErrors());
+            return redirect()->to('/register');
         }
 
         // Hash password
@@ -115,9 +112,13 @@ class AuthController extends Controller
             'password' => $hashedPassword,
         ]);
 
-        session()->setFlashdata('login', 'Registration successful. Please login.');
+        session()->setFlashdata('login', 'Pendaftaran berhasil. Silakan login.');
         return redirect()->to('/login');
     }
+
+
+
+
 
 
     public function logout()

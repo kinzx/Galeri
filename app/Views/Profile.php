@@ -64,7 +64,7 @@
         <div class="d-flex justify-content-between">
             <h1 class="fw-light text-center text-lg-start mt-4 mb-0 ">Album</h1>
             <div class="d-flex align-items-end">
-                <a class="btn btn-outline-dark d-flex align-items-center" data-bs-toggle="modal" href="#exampleModalToggle" role="button" href="">
+                <a class="btn btn-outline-dark d-flex align-items-center" style="border-radius: 50px;" data-bs-toggle="modal" href="#exampleModalToggle" role="button" href="">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20px" height="20px" class="w-5 h-5">
                         <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
                     </svg>
@@ -83,7 +83,7 @@
                                         <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
                                         <input type="text" class="form-control" name="deskripsi" id="deskripsi">
                                     </div>
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="submit" style="border-radius: 50px;" class="btn btn-success">Tambah</button>
                                 </form>
                             </div>
                         </div>
@@ -113,9 +113,9 @@
                                     <?= $album['deskripsi'] ?>
                                 </p>
                                 <div class="d-grid gap-2">
-                                    <a href="<?= base_url('album?id=' . $album['albumid']) ?>" class="btn btn-primary">Open</a>
+                                    <a href="<?= base_url('album?id=' . $album['albumid']) ?>" style="border-radius: 50px;" class="btn btn-primary">Open</a>
                                     <form action="<?= base_url('hapus_album/' . $album['albumid']) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this album?');">
-                                        <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                                        <button type="submit" style="border-radius: 50px;" class="btn btn-outline-danger">Hapus</button>
                                     </form>
                                 </div>
                             </div>

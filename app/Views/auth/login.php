@@ -12,17 +12,18 @@
 </head>
 <style>
   body {
-            background-image: url('/img/bg-masthead.jpg');
-            background-size: cover;
-            /* Properti ini akan memastikan gambar latar belakang menutupi seluruh area body */
-            background-repeat: no-repeat;
-            /* Untuk memastikan gambar tidak diulang */
-        }
+    background-image: url('/img/bg-masthead.jpg');
+    background-size: cover;
+    /* Properti ini akan memastikan gambar latar belakang menutupi seluruh area body */
+    background-repeat: no-repeat;
+    /* Untuk memastikan gambar tidak diulang */
+  }
 </style>
+
 <body>
   <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="row d-flex justify-content-center align-items-center h-50 text-center">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card bg-light shadow-lg p-3 mb-5 bg-body text-black" style="border-radius: 3rem;">
             <div class="card-body p-5 text-center">
@@ -53,14 +54,7 @@
                     style="border-radius: 5rem;">Login</button>
                   <p class="mb-0">Don't have an account? <a href="<?= base_url('/register') ?>"
                       class="text-black-50 fw-bold">Register</a></p>
-
-                  <div>
-
-
-                  </div>
-
                 </form>
-
               </div>
             </div>
           </div>
@@ -68,6 +62,7 @@
       </div>
     </div>
   </section>
+
 </body>
 
 </html>

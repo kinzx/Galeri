@@ -29,7 +29,7 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Glaria</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
-                        <a class="btn btn-dark" href="/login">Get Started</a>
+                        <a class="btn btn-dark" href="/login">Cari gambar</a>
                     </div>
                 </div>
             </div>
