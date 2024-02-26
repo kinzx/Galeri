@@ -28,6 +28,7 @@ $routes->get('like/(:any)', 'FotoController::like/$1');
 
 $routes->get('/uploadForm', 'FotoController::uploadForm');
 $routes->post('/uploadForm', 'FotoController::upload');
+$routes->post('/hapus_foto/(:num)', 'Home::hapusFoto/$1');
 
 $routes->get('/home', 'FotoController::home');
 $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
@@ -40,4 +41,3 @@ $routes->get('/album', 'Home::album');
 $routes->get('/profile', 'Home::profile');
 // $routes->post('hapus_album/(:num)', 'Home::hapus_album/$1');
 $routes->post('hapus_album/(:num)', 'Home::hapus_album/$1');
-

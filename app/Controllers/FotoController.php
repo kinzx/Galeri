@@ -269,5 +269,4 @@ class FotoController extends BaseController
         // Redirect kembali ke halaman kelolafoto setelah pengeditan
         return redirect()->to('/kelolafoto')->with('success', 'Photo updated successfully.');
     }
-
 }

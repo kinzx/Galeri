@@ -61,7 +61,7 @@
             <?php foreach ($gambarDariDatabase as $gambar) : ?>
                 <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
-                    <img class="" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
+                    <img class="mb-3" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
 
                 </a>
 

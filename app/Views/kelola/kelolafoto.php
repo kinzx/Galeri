@@ -19,9 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,17 +36,13 @@
                 </ul>
 
                 <a href="/profile">
-                    <?php if ($userData['avatar']): ?>
-                        <img src=" <?= base_url('/uploads/' . $userData['avatar']) ?>" alt="Avatar" class="rounded-circle  "
-                            width="45px" height="45px">
-                    <?php else: ?>
+                    <?php if ($userData['avatar']) : ?>
+                        <img src=" <?= base_url('/uploads/' . $userData['avatar']) ?>" alt="Avatar" class="rounded-circle  " width="45px" height="45px">
+                    <?php else : ?>
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" "
-                                                                                                                            stroke-width=" 1.5" width="45" height="45"
-                            stroke="currentColor" style="color: black;" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
+                                                                                                                            stroke-width=" 1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
 
                     <?php endif; ?>
@@ -63,23 +57,22 @@
 
     <div class="d1">
 
-        <?php if (session()->has('success')): ?>
+        <?php if (session()->has('success')) : ?>
             <div class="alert alert-success" role="alert">
                 <?= session('success') ?>
             </div>
         <?php endif ?>
         <div class="container">
-            <?php foreach ($gambarDariDatabase as $gambar): ?>
+            <?php foreach ($gambarDariDatabase as $gambar) : ?>
                 <a class="row rounded-4" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                     <?php $gambarPath = base_url('uploads/' . $gambar['lokasifoto']); ?>
                     <img class="mb-3" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
                 </a>
             <?php endforeach; ?>
         </div>
-        <?php foreach ($gambarDariDatabase as $gambar): ?>
+        <?php foreach ($gambarDariDatabase as $gambar) : ?>
 
-            <div class="modal fade " id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade " id="exampleModal<?= $gambar['idfoto'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-dialog-centered modal-lg">
 
                     <div class="modal-content ">
@@ -101,28 +94,22 @@
 
                                             <div class="card border-0" style="width: 23rem;">
                                                 <ul class="list-group list-group-flush">
-                                                    <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>"
-                                                        method="post" enctype="multipart/form-data" class="mt-4">
+                                                    <form action="<?= base_url('edit/' . $gambar['idfoto']) ?>" method="post" enctype="multipart/form-data" class="mt-4">
                                                         <li class="list-group-item border-0">
                                                             <label for="">Judul</label>
-                                                            <input class="form-control" type="text" name="judul"
-                                                                value="<?= $gambar['judul'] ?>">
+                                                            <input class="form-control" type="text" name="judul" value="<?= $gambar['judul'] ?>">
                                                         </li>
                                                         <li class="list-group-item border-0">
                                                             <label for="">Deskripsi</label>
-                                                            <input type="text" class="form-control" name="deskripsi"
-                                                                value="<?= $gambar['deskripsi'] ?>">
+                                                            <input type="text" class="form-control" name="deskripsi" value="<?= $gambar['deskripsi'] ?>">
                                                         </li>
                                                         <li class="list-group-item border-0">
                                                             <button class="btn btn-success" type="submit">Edit</button>
                                                         </li>
                                                     </form>
                                                     <li class="list-group-item border-0">
-                                                        <form action="<?= base_url('delete/' . $gambar['idfoto']) ?>"
-                                                            method="post"
-                                                            onsubmit="return confirm('Are you sure you want to delete this photo?');">
-                                                            <button type="submit"
-                                                                class="btn btn-danger btn-sm">Hapus</button>
+                                                        <form action="<?= base_url('delete/' . $gambar['idfoto']) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this photo?');">
+                                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                                         </form>
                                                     </li>
                                                 </ul>

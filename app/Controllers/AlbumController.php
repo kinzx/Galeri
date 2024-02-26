@@ -26,7 +26,7 @@ class AlbumController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'iduser' => session()->get('iduser')
         ];
-        
+
         $albumModel->insert($data);
         session()->setFlashdata('success', 'Album berhasil ditambahkan.');
         return redirect()->to('/profile');

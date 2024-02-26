@@ -18,9 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <div class="container-fluid">
             <img src="<?= base_url('/img/Icon1.png') ?>" alt="Deskripsi gambar" width="45" height="45" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,17 +34,13 @@
                     </li>
                 </ul>
                 <a href="/profile">
-                    <?php if ($userData['avatar']): ?>
-                        <img src=" <?= base_url('/uploads/' . $userData['avatar']) ?>" alt="Avatar" class="rounded-circle  "
-                            width="45px" height="45px">
-                    <?php else: ?>
+                    <?php if ($userData['avatar']) : ?>
+                        <img src=" <?= base_url('/uploads/' . $userData['avatar']) ?>" alt="Avatar" class="rounded-circle  " width="45px" height="45px">
+                    <?php else : ?>
                         <!-- Jika avatar tidak tersedia, tampilkan avatar default -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" "
-                                                                                                                                                    stroke-width=" 1.5"
-                            width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" "
+                                                                                                                                                    stroke-width=" 1.5" width="45" height="45" stroke="currentColor" style="color: black;" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
 
                     <?php endif; ?>
@@ -56,22 +50,23 @@
     </nav>
     <div class="container">
 
-        <?php foreach ($gambarAlbum as $albumitem):
-            foreach ($gambarDariDatabase as $gambar):
-                if ($gambar['idfoto'] == $albumitem['idfoto']): ?>
+        <?php foreach ($gambarAlbum as $albumitem) :
+            foreach ($gambarDariDatabase as $gambar) :
+                if ($gambar['idfoto'] == $albumitem['idfoto']) : ?>
                     <?php
                     $gambarPath = base_url('uploads/' . $gambar['lokasifoto'] ?? 'default.jpg');
                     ?>
                     <a class="row" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $gambar['idfoto'] ?>">
                         <img class="mb-3" style="border-radius: 50px;" src="<?= $gambarPath ?>" alt="">
                     </a>
-                <?php endif; endforeach; endforeach; ?>
+        <?php endif;
+            endforeach;
+        endforeach; ?>
     </div>
-    <?php foreach ($gambarAlbum as $albumitem):
-        foreach ($gambarDariDatabase as $gambar):
-            if ($gambar['idfoto'] == $albumitem['idfoto']): ?>
-                <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <?php foreach ($gambarAlbum as $albumitem) :
+        foreach ($gambarDariDatabase as $gambar) :
+            if ($gambar['idfoto'] == $albumitem['idfoto']) : ?>
+                <div class="modal fade" id="exampleModal<?= $gambar['idfoto'] ?>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog  modal-dialog-centered modal-lg">
                         <div class="modal-content border border-5 border-dark" style="border-radius: 25px;">
                             <div class="modal-header d-flex align-items-start border-1">
@@ -83,46 +78,25 @@
                             <div class="modal-body ">
                                 <div class="row">
                                     <!-- <div class="col-md-6"> -->
-                                        <?php
-                                        $gambarPath = base_url('uploads/' . $gambar['lokasifoto']);
-                                        ?>
-                                        <img class="img-fluid rounded mb-3" st src="<?= $gambarPath ?>" alt="">
-                                    <!-- </div> -->
-                                    <!-- <div class="col-md-6  ">
-                                        <div class="row ">
-
-                                            <div class="d-flex bd-highlight mb-3">
-                                                <div class="p-2 bd-highlight">
-                                                    <div class="p-2 bd-highlight d-flex align-items-center">
-                                                        <?php if ($gambar['avatar']): ?>
-                                                            <img src=" <?= base_url('/uploads/' . $gambar['avatar']) ?>" alt="Avatar"
-                                                                class="rounded-circle  " width="45px" height="45px">
-                                                        <?php else: ?>
-
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                viewBox="0 0 24 24" " 1.5" width="45" height="45" stroke="currentColor"
-                                                                style="color: black;" class="w-6 h-6">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                            </svg>
-
-                                                        <?php endif; ?>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                    <?php
+                                    $gambarPath = base_url('uploads/' . $gambar['lokasifoto']);
+                                    ?>
+                                    <img class="img-fluid rounded mb-3" st src="<?= $gambarPath ?>" alt="">
+                                    <form action="<?= base_url('hapus_foto/' . $albumitem['albumfotoid']) ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this photo?');">
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endif; endforeach; endforeach; ?>
+    <?php endif;
+        endforeach;
+    endforeach; ?>
 
 
 
-    <!-- <?php if (session()->has('success') || session()->has('error')): ?>
+    <!-- <?php if (session()->has('success') || session()->has('error')) : ?>
         <div class="alert alert-<?php echo session()->has('success') ? 'success' : 'danger'; ?>" role="alert">
             <?= session()->has('success') ? session('success') : session('error'); ?>
         </div>

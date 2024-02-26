@@ -77,6 +77,18 @@ class Home extends BaseController
         return view('album', $data);
     }
 
+    public function hapusFoto($albumfotoid)
+    {
+        $albumfotoModel = new AlbumfotoModel();
+        // Pastikan pengguna telah login
+        $albumfotoModel->delete($albumfotoid);
+        session()->setFlashdata('success', 'Photo deleted successfully.');
+        return redirect()->to('/album');
+    }
+
+    // Lakukan proses penghapusan foto dari album
+
+
 
 
 
