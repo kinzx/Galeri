@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\FotoModel;
 use App\Models\AlbumModel;
+use App\Models\AlbumfotoModel;
 
 helper(['user']);
 class Home extends BaseController
@@ -16,6 +17,7 @@ class Home extends BaseController
     {
         $this->fotoModel = new \App\Models\FotoModel();
         $this->albumModel = new \App\Models\AlbumModel();
+        $this->albumfotoModel = new \App\Models\AlbumfotoModel();
         $this->session = \Config\Services::session(); // Memuat sesi di konstruktor
     }
     public function index(): string
@@ -49,12 +51,14 @@ class Home extends BaseController
         $album = $albumModel->find($albumid);
 
         // Periksa apakah album ditemukan dan milik pengguna yang sedang login
-        if (!$album || $album['iduser'] != $iduser) {
+        if (isset($album['iduser']) && $album['iduser'] != $iduser) {
             // Album tidak ditemukan atau bukan milik pengguna yang sedang login
             // Tampilkan pesan error dan redirect kembali ke halaman album
             session()->setFlashdata('error', 'Album tidak valid atau Anda tidak memiliki akses ke album ini.');
             return redirect()->to('/album');
         }
+
+
 
         // Ambil data album pengguna
         $albumModel = new \App\Models\AlbumModel();
@@ -79,7 +83,9 @@ class Home extends BaseController
 
     public function hapusFoto($albumfotoid)
     {
+        // Buat instance AlbumfotoModel
         $albumfotoModel = new AlbumfotoModel();
+
         // Pastikan pengguna telah login
         $albumfotoModel->delete($albumfotoid);
         session()->setFlashdata('success', 'Photo deleted successfully.');
@@ -89,14 +95,10 @@ class Home extends BaseController
     // Lakukan proses penghapusan foto dari album
 
 
-
-
-
     public function hapus_album($albumid)
     {
         // Hapus entri album itu sendiri
         $this->albumModel->delete($albumid);
-
         session()->setFlashdata('error', 'Album berhasil dihapus.');
         return redirect()->to('/profile');
     }

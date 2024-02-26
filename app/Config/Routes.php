@@ -28,7 +28,8 @@ $routes->get('like/(:any)', 'FotoController::like/$1');
 
 $routes->get('/uploadForm', 'FotoController::uploadForm');
 $routes->post('/uploadForm', 'FotoController::upload');
-$routes->post('/hapus_foto/(:num)', 'Home::hapusFoto/$1');
+
+$routes->post('hapus_foto/(:num)', 'Home::hapusFoto/$1');
 
 $routes->get('/home', 'FotoController::home');
 $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');

@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body >
+<body>
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-50">
@@ -30,46 +30,31 @@
                             <div class="mt-md-4 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                                 <p class="text-black-50 mb-5">create an account!</p>
-                                <?php
-                                $session = session();
-                                $errors = $session->getFlashdata('errors');
-                                ?>
-                                <?php if ($errors) { ?>
-                                    <p style="color:red">Terjadi Kesalahan:
-                                    <ul>
-                                        <?php foreach ($errors as $e) { ?>
-                                            <li>
-                                                <?php echo $e ?>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-                                    </p>
-                                <?php } ?>
+                                <?php if (session()->has('error')) : ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= session('error') ?>
+                                    </div>
+                                <?php endif ?>
                                 <form action="<?= base_url('/register') ?>" method="post">
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label">Username</label>
-                                        <input type="text" name="username" class="form-control form-control-lg"
-                                            style="border-radius: 5rem;" />
+                                        <input type="text" name="username" class="form-control form-control-lg" style="border-radius: 5rem;" />
                                     </div>
 
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label">Email</label>
-                                        <input type="text" name="email" class="form-control form-control-lg"
-                                            style="border-radius: 5rem;" />
+                                        <input type="text" name="email" class="form-control form-control-lg" style="border-radius: 5rem;" />
                                     </div>
 
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control form-control-lg"
-                                            style="border-radius: 5rem;" />
+                                        <input type="password" name="password" class="form-control form-control-lg" style="border-radius: 5rem;" />
                                     </div>
 
-                                    <button class="btn btn-outline-dark btn-lg px-5 mb-3" name="register" type="submit"
-                                        style="border-radius: 5rem;">Register</button>
+                                    <button class="btn btn-outline-dark btn-lg px-5 mb-3" name="register" type="submit" style="border-radius: 5rem;">Register</button>
 
                                     <div>
-                                        <p class="mb-0">already have an account? <a href="<?= base_url('/login') ?>"
-                                                class="text-black-50 fw-bold">Login</a>
+                                        <p class="mb-0">already have an account? <a href="<?= base_url('/login') ?>" class="text-black-50 fw-bold">Login</a>
                                         </p>
                                     </div>
                                 </form>
