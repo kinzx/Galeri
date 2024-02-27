@@ -24,7 +24,7 @@ $routes->get('/kelolafoto', 'FotoController::kelolafoto');
 $routes->post('delete/(:num)', 'FotoController::delete/$1');
 $routes->post('edit/(:num)', 'FotoController::edit/$1');
 $routes->post('update/(:any)', 'FotoController::update/$1'); // Tambahkan rute untuk menangani update foto
-$routes->get('like/(:any)', 'FotoController::like/$1');
+
 
 $routes->get('/uploadForm', 'FotoController::uploadForm');
 $routes->post('/uploadForm', 'FotoController::upload');
@@ -35,6 +35,7 @@ $routes->get('/home', 'FotoController::home');
 $routes->post('/home/(:any)', 'KomentarController::tambahkomentar/$1');
 $routes->post('/simpan-foto', 'FotoController::simpanFoto');
 
+$routes->get('dislike/(:num)', 'FotoController::dislike/$1');
 $routes->get('like/(:num)', 'FotoController::like/$1');
 
 $routes->post('/album/create', 'AlbumController::create');

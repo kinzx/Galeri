@@ -105,6 +105,8 @@ class FotoController extends BaseController
         return redirect()->to('/home');
     }
 
+    
+
 
 
     public function home()
@@ -147,6 +149,11 @@ class FotoController extends BaseController
         // var_dump($gambarDariDatabase);
         // die;
         return view('home', $data);
+    }
+
+    public function detailpost()
+    {
+
     }
 
     public function simpanFoto()
@@ -194,7 +201,7 @@ class FotoController extends BaseController
         return redirect()->to('/home');
     }
 
-
+    
 
     // public function kelolafoto()
     // {

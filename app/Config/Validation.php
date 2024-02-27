@@ -38,18 +38,49 @@ class Validation extends BaseConfig
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
 
-    public $login = [
-        'email' => 'required|valid_email',
-        'password' => 'required|min_length[6]',
+    public $register = [
+        'username' => 'required|alpha_numeric|min_length[3]|max_length[50]|is_unique[user.username]',
+        'password' => 'min_length[8]|alpha_numeric_punct',
+        'confirm' => 'matches[password]',
+        'email' => 'required|valid_email|max_length[225]',
+        'nama_lengkap' => 'permit_empty|string|max_length[225]',
+        'alamat' => 'permit_empty|string|max_length[225]'
     ];
 
-    public $rules = [
-        'register' => [
-            'username' => 'required|alpha_numeric|min_length[3]|max_length[255]',
-            'email' => 'required|valid_email|is_unique[user.email]',
-            'password' => 'required|min_length[8]',
-        ],
+    
+    
+    public $user = [
+        'password' => 'min_length[8]|alpha_numeric_punct',
+        'confirm' => 'matches[password]'
     ];
+    
+     public $login = [
+        'username' => 'required|alpha_numeric|min_length[3]|max_length[50]|is_unique[user.username]',
+        'password' => 'min_length[8]|alpha_numeric_punct',
+    ];
+    
+    public $register_errors = [
+        'username' => [
+            'alpha_numeric' => 'Username hanya boleh mengandung huruf dan angka',
+            'required' => 'Username harus diisi',
+            'is_unique' => 'Username sudah dipakai'
+        ],
+        'password' => [
+            'min_length' => 'Password harus terdiri dari 8 kata',
+            'alpha_numeric_punct' => 'Password hanya boleh mengandung angka, huruf, dan karakter yang valid'
+        ],
+        'confirm' => [
+            'matches' => 'Konfirmasi password tidak cocok'
+        ]
+    ];
+    
+    // public $rules = [
+    //     'register' => [
+    //         'username' => 'required|alpha_numeric|min_length[3]|max_length[255]',
+    //         'email' => 'required|valid_email|is_unique[user.email]',
+    //         'password' => 'required|min_length[8]',
+    //     ],
+    // ];
 
     // public $rules = [
     //     'judul' => 'required|min_length[3]|max_length[255]',

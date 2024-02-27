@@ -88,20 +88,34 @@ class AuthController extends Controller
     {
         $data = $this->request->getPost();
 
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'username' => 'required|alpha_numeric|min_length[3]|max_length[255]',
-            'email' => 'required|valid_email|is_unique[user.email]',
-            'password' => 'required|min_length[8]',
-        ]);
+        // $validation = \Config\Services::validation();
+        // $validation->setRules([
+        //     'username' => 'required|alpha_numeric|min_length[3]|max_length[255]',
+        //     'email' => 'required|valid_email|is_unique[user.email]',
+        //     'password' => 'required|min_length[8]',
+        // ]);
 
-        // Melakukan validasi terhadap data yang diterima
-        if (!$validation->run($data)) {
-            // Jika validasi gagal, kembalikan ke halaman registrasi dengan pesan kesalahan
-            session()->setFlashdata('error', $validation->getErrors());
-            return redirect()->to('/register');
+        // // Melakukan validasi terhadap data yang diterima
+        // if (!$validation->run($data)) {
+        //     // Jika validasi gagal, kembalikan ke halaman registrasi dengan pesan kesalahan
+        //     session()->setFlashdata('error', $validation->getErrors());
+        //     return redirect()->to('/register');
+        // }
+
+        // Tangkap data dari form 
+        $data = $this->request->getPost();
+    
+        // Jalankan validasi
+        $this->validation->run($data, 'register');
+    
+        // Cek errornya
+        $errors = $this->validation->getErrors();
+    
+        // Jika ada error kembalikan ke halaman register
+        if ($errors) {
+            session()->setFlashdata('error', $errors);
+            return redirect()->to('register');
         }
-
         // Hash password
         $hashedPassword = password_hash($data['password'], PASSWORD_BCRYPT);
 

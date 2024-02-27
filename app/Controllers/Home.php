@@ -89,7 +89,7 @@ class Home extends BaseController
         // Pastikan pengguna telah login
         $albumfotoModel->delete($albumfotoid);
         session()->setFlashdata('success', 'Photo deleted successfully.');
-        return redirect()->to('/album');
+        return redirect()->to('/profile');
     }
 
     // Lakukan proses penghapusan foto dari album
