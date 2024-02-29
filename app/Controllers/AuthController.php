@@ -27,7 +27,6 @@ class AuthController extends Controller
         return view('auth/login');
 
     }
-
     public function valid_login()
     {
         $data = $this->request->getPost();
@@ -37,16 +36,15 @@ class AuthController extends Controller
         // Validasi login
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'email' => 'required|valid_email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
         if (!$validation->run($data)) {
-            session()->setFlashdata('error', 'Invalid email or password');
+            session()->setFlashdata('error', ' username atau password salah');
             return redirect()->to('/login');
         }
 
-        $this->validation->run($data, 'login'); // Jalankan validasi
 
         $errors = $this->validation->getErrors();
 
@@ -55,11 +53,11 @@ class AuthController extends Controller
             return redirect()->to('/login');
         }
 
-        $email = $data['email'];
+        $username = $data['username'];
         $password = $data['password'];
 
         $userModel = new UserModel();
-        $user = $userModel->where('email', $email)->first();
+        $user = $userModel->where('username', $username)->first();
 
         if ($user) {
             // User ditemukan, verifikasi password
@@ -75,9 +73,12 @@ class AuthController extends Controller
         }
 
         // Email atau password salah
-        session()->setFlashdata('error', 'Email atau password salah');
+        session()->setFlashdata('error', 'username atau password salah');
         return redirect()->to('/login');
     }
+
+
+
 
     public function register()
     {
@@ -86,7 +87,6 @@ class AuthController extends Controller
 
     public function valid_register()
     {
-        $data = $this->request->getPost();
 
         // $validation = \Config\Services::validation();
         // $validation->setRules([
@@ -104,13 +104,13 @@ class AuthController extends Controller
 
         // Tangkap data dari form 
         $data = $this->request->getPost();
-    
+
         // Jalankan validasi
         $this->validation->run($data, 'register');
-    
+
         // Cek errornya
         $errors = $this->validation->getErrors();
-    
+
         // Jika ada error kembalikan ke halaman register
         if ($errors) {
             session()->setFlashdata('error', $errors);

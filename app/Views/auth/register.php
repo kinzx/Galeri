@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= base_url('bootstrap-5.0.2/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/font.css">
 
     <title>Document</title>
@@ -35,39 +36,60 @@
                                 $error = $session->getFlashdata('error');
                                 ?>
 
-                                <?php if ($error) { ?>
-                                    <p style="color:red">Terjadi Kesalahan:
-                                    <ul>
-                                        <?php foreach ($error as $e) { ?>
-                                            <li>
-                                                <?php echo $e ?>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-                                    </p>
-                                <?php } ?>
+                                <?php if (!empty($error)): ?>
+                                    <?php if (is_array($error)): ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?php foreach ($error as $e): ?>
+                                                <p>
+                                                    <?= esc($e) ?>
+                                                </p>
+                                            <?php endforeach ?>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <p>
+                                                <?= esc($error) ?>
+                                            </p>
+                                        </div>
+                                    <?php endif ?>
+                                <?php endif ?>
                                 <form action="<?= base_url('/register') ?>" method="post">
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label">Username</label>
 
-                                        <input type="text" name="username" class="form-control form-control-lg" style="border-radius: 5rem;" />
+                                        <input type="text" name="username" class="form-control form-control-lg"
+                                            style="border-radius: 5rem;" />
                                     </div>
 
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label ">Email</label>
 
-                                        <input type="text" name="email" class="form-control form-control-lg" style="border-radius: 5rem;" /><label style="font-size: 12px; "><span style="font-size: 12px; color: red; ">*</span>Email tidak boleh sama</label>
+                                        <input type="text" name="email" class="form-control form-control-lg"
+                                            style="border-radius: 5rem;" /><label style="font-size: 12px; "><span
+                                                style="font-size: 12px; color: red; ">*</span>Email tidak boleh
+                                            sama</label>
                                     </div>
 
                                     <div class="form-outline form-black mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control form-control-lg" style="border-radius: 5rem;" /><label style="font-size: 12px; "><span style="font-size: 12px; color: red; ">*</span>Password harus 8 karakter</label>
+                                        <input type="password" name="password" class="form-control form-control-lg"
+                                            style="border-radius: 5rem;" /><label style="font-size: 12px; "><span
+                                                style="font-size: 12px; color: red; ">*</span>Password harus 8
+                                            karakter</label>
+                                        <br>
+                                        <br>
+                                        <label class="form-label">Repassword</label>
+                                        <input id="password-field" type="password" name="confirm"
+                                            class="form-control form-control-lg" style="border-radius: 5rem;" required>
+                                        <span toggle="#password-field"></span>
                                     </div>
 
-                                    <button class="btn btn-outline-dark btn-lg px-5 mb-3" name="register" type="submit" style="border-radius: 5rem;">Register</button>
+                                    <button class="btn btn-outline-dark btn-lg px-5 mb-3" name="register" type="submit"
+                                        style="border-radius: 5rem;">Register</button>
 
                                     <div>
-                                        <p class="mb-0">already have an account? <a href="<?= base_url('/login') ?>" class="text-black-50 fw-bold">Login</a>
+                                        <p class="mb-0">already have an account? <a href="<?= base_url('/login') ?>"
+                                                class="text-black-50 fw-bold">Login</a>
                                         </p>
                                     </div>
                                 </form>

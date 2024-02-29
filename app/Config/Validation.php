@@ -46,23 +46,18 @@ class Validation extends BaseConfig
         'nama_lengkap' => 'permit_empty|string|max_length[225]',
         'alamat' => 'permit_empty|string|max_length[225]'
     ];
-
-    
     
     public $user = [
         'password' => 'min_length[8]|alpha_numeric_punct',
         'confirm' => 'matches[password]'
     ];
     
-     public $login = [
-        'username' => 'required|alpha_numeric|min_length[3]|max_length[50]|is_unique[user.username]',
-        'password' => 'min_length[8]|alpha_numeric_punct',
-    ];
+   
+    
     
     public $register_errors = [
         'username' => [
             'alpha_numeric' => 'Username hanya boleh mengandung huruf dan angka',
-            'required' => 'Username harus diisi',
             'is_unique' => 'Username sudah dipakai'
         ],
         'password' => [
